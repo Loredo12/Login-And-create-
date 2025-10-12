@@ -566,7 +566,7 @@ int createAccount() {
         }
         break;
     }
-
+	loadingScreen();
     // SAVE ACCOUNT
     fp = fopen("accounts.txt", "a");
     if (fp == NULL) {
