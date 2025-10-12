@@ -21,16 +21,149 @@ void forgotPassword();
 void inputPassword(char *pass);
 void loadingScreen();
 void clear_stdin();
+void EDUC_Regular_Schedule();
+void BSOA_Regular_Schedule();
+
+
 
 int main() {
     menu();
     return 0;
 }
 
+
+
+
+
+void EDUC_Regular_Schedule() {
+	printf("\n                   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|                                              WEEKLY SCHEDULE                                                   |×|\n");
+	printf("                     |×|                                              COURSE: EDUC FIRST YEAR                                          |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|          ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇   |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|      TIME       |     MONDAY   |    TUESDAY    |   WEDNESDAY   |   THURSDAY    |     FRIDAY    |    SATURDAY   |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    7:00-8:00    |              |               |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    8:00-8:45    | TLE101 LAB   |               |               |               |               | FCC101 404    |×|\n");
+    printf("                     |×|                 | CL2 MAIN     |               |               |               |               | MAIN          |×|\n");   
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    8:45-9:00    |                                  BREAK TIME                                                  |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|   9:00-10:00    |              |               |               |               |               |               |×|\n");
+    printf("                     |×|                 | TLE101 LAB   |               |               |               |               | FCC101 404    |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~× CL2 MAIN     ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~× MAIN          |×|\n");
+    printf("                     |×|   10;00-10:45   |              |               |               |               |               |               |×|\n");
+    printf("                     |×|                 |              |               |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|   10:45-11:15   |                                  LUNCH BREAK                                                 |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|   11:15-12:00   |              |               |               |               |               |               |×|\n");
+    printf("                     |×|                 |              |               | GE102 |104    |               |               | NSTP1 403     |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~× ANNEX         ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~× MAIN          |×|\n");
+	printf("                     |×|    12:00-1:00   |              |               |               |               |               |               |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×              ×               ×               ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×               |×|\n");
+	printf("                     |×|    1:00-2:00    | TLE102 404     | GE102 403   |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~× MAIN         × MAIN          |~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    2:00-2:45    |              |               | PATHFIT1 104  |               |               | FCC102 404    |×|\n");
+    printf("                     |×|                 |              |               | ANNEX         |               |               | MAIN          |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|    2:45-3:00    |                                  BREAK TIME                                                  |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    3:00-4:00    | PLS 102      |               | PATHFIT1 104  |               |               |               |×|\n");
+    printf("                     |×|                 | ANNEX        | TLE101 LEC    | ANNEX         |               |               | FCC102 404    |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~× 403-MAIN      ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~× MAIN          |×|\n");
+    printf("                     |×|    4:00-4:45    |              |               | GE103 104     |               |               |               |×|\n");
+    printf("                     |×|                 |              |               | ANNEX         |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    4:45-5:15    |                                  BREAK TIME                                                  |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|    5:15-6:00    |              |               |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~× GE103 104     ×               ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|    6:00-7:00    |              |               | ANNEX         |               |               |               |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+
+}
+
+
+
+
+
+
+
+void BSOA_Regular_Schedule() {
+	printf("\n                   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|                                              WEEKLY SCHEDULE                                                   |×|\n");
+	printf("                     |×|                                              COURSE: BSOA                                                      |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|          ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇   |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|      TIME       |     MONDAY   |    TUESDAY    |   WEDNESDAY   |   THURSDAY    |     FRIDAY    |    SATURDAY   |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    7:00-8:00    |              |               |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    8:00-8:45    |              |               |               |               |               |  NSTP1 404-   |×|\n");
+    printf("                     |×|                 |              |               |               |               |               |  ROOM  MAIN   |×|\n");   
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    8:45-9:00    |                                  BREAK TIME                                                  |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|   9:00-10:00    |              |               |               |               |               |  NSTP1 404-   |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×  ROOM MAIN    |×|\n");
+    printf("                     |×|   10;00-10:45   |              |               |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|   10:45-11:15   |                                  LUNCH BREAK                                                 |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|   11:15-12:00   |              |               |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×  GE104 104-   ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×  GE101 404-   |×|\n");
+	printf("                     |×|    12:00-1:00   |              |               |  ANNEX        |               |               |  MAIN.        |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×               ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×               |×|\n");
+	printf("                     |×|    1:00-2:00    |              | QACC102LEC    |               |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~× 411-MAIN      |~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    2:00-2:45    |              |               | PATHFIT 104   |               |               |               |×|\n");
+    printf("                     |×|                 |              |               | ANNEX         |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|    2:45-3:00    |                                  BREAK TIME                                                  |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    3:00-4:00    |  PLS 102     |               | PATHFIT 104   |               |               |               |×|\n");
+    printf("                     |×|                 |  ANNEX       | QACc102LEC    | ANNEX         |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~× CL2-MAIN      ×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|    4:00-4:45    | QACC101 102- |               | GE2 104       |               |               |               |×|\n");
+    printf("                     |×|                 | ANNEX        |               | ANNEX         |               |               |               |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |×|    4:45-5:15    |                                  BREAK TIME                                                  |×|\n");
+    printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
+    printf("                     |×|    5:15-6:00    | QACC101 102- | QACC102LEC    | GE2 104       |               |               |               |×|\n");
+    printf("                     |×|                 | ANNEX        | ANNEX         | ANNEX         |               |               |               |×|\n");
+    printf("                     |×|    6:00-7:00    |              |               |               |               |               |               |×|\n");
+	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
+	printf("                     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+}
+
+
+
+
+
+
+
+
+
+
+
 void clear_stdin() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
+
+
+
+
+
+
+
 
 void menu() {
     char choice;
@@ -67,11 +200,17 @@ void menu() {
     }
 }
 
-/* createAccount:
-   - collects personal info + account info
-   - writes a record to accounts.txt in the format:
-     username,password,role,course,firstName,lastName\n
-*/
+
+
+
+
+
+
+
+
+
+
+
 int createAccount() {
     char firstName[50], lastName[50], birthD[20], sex[10], address[200];
     char username[50], password[50], confirmPassword[50];
@@ -97,13 +236,10 @@ int createAccount() {
         printf("\n                                  Type here: ");
         if (scanf(" %[^\n]", firstName) != 1) { clear_stdin(); continue; }
 
-        if (strcmp(firstName, "9") == 0) {
-            return 0; // go back to menu
-        }
+        if (strcmp(firstName, "9") == 0) return 0;
 
         if (strlen(firstName) < 2) {
-            printf("\n                            (System): Firstname too short! Try again.\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Firstname too short! Try again.\n");
             getch();
             continue;
         }
@@ -113,6 +249,14 @@ int createAccount() {
         int leftPadding = (boxWidth - textLen) / 2;
 
         system("cls");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
         printf("\n\n                                  Enter FIRSTNAME:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |%*s%s%*s|\n", leftPadding, "", firstName, boxWidth - textLen - leftPadding, "");
@@ -130,8 +274,7 @@ int createAccount() {
         if (scanf(" %[^\n]", lastName) != 1) { clear_stdin(); continue; }
 
         if (strlen(lastName) < 2) {
-            printf("\n                            (System): Lastname too short! Try again.\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Lastname too short! Try again.\n");
             getch();
             continue;
         }
@@ -141,6 +284,14 @@ int createAccount() {
         int leftPadding = (boxWidth - textLen) / 2;
 
         system("cls");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
         printf("\n\n                                  Enter LASTNAME:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |%*s%s%*s|\n", leftPadding, "", lastName, boxWidth - textLen - leftPadding, "");
@@ -159,8 +310,7 @@ int createAccount() {
         if (scanf(" %[^\n]", birthD) != 1) { clear_stdin(); continue; }
 
         if (strlen(birthD) != 10 || birthD[2] != '/' || birthD[5] != '/') {
-            printf("\n                            (System): Invalid date format! Use DD/MM/YYYY\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Invalid date format! Use DD/MM/YYYY\n");
             getch();
             continue;
         }
@@ -170,6 +320,14 @@ int createAccount() {
         int leftPadding = (boxWidth - textLen) / 2;
 
         system("cls");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
         printf("\n\n                                  Date of Birth (DD/MM/YYYY):\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |%*s%s%*s|\n", leftPadding, "", birthD, boxWidth - textLen - leftPadding, "");
@@ -191,8 +349,7 @@ int createAccount() {
         for (int i = 1; sex[i]; i++) sex[i] = tolower((unsigned char)sex[i]);
 
         if (strcmp(sex, "Male") != 0 && strcmp(sex, "Female") != 0) {
-            printf("\n                            (System): Please enter either 'Male' or 'Female'\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Please enter either 'Male' or 'Female'\n");
             getch();
             continue;
         }
@@ -202,6 +359,11 @@ int createAccount() {
         int leftPadding = (boxWidth - textLen) / 2;
 
         system("cls");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
         printf("\n\n                                  Sex at Birth (Male/Female):\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |%*s%s%*s|\n", leftPadding, "", sex, boxWidth - textLen - leftPadding, "");
@@ -209,29 +371,41 @@ int createAccount() {
         break;
     }
 
-    // ADDRESS (no strict validation)
+    // HOME ADDRESS (FIXED)
+    system("cls");
+    printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+    printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+    printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+    printf("                  |                                         Account Information Section                                                  |\n");
+    printf("                  +======================================================================================================================+\n");
     printf("\n\n                                  Home Address:\n");
     printf("                                  ------------------------------------------------------------------------------------------\n");
     printf("                                 |                                                                                          |\n");
     printf("                                  ------------------------------------------------------------------------------------------\n");
     printf("\n                                  Type here: ");
-    clear_stdin(); // ensure no leftover
+    clear_stdin();
     if (!fgets(address, sizeof(address), stdin)) address[0] = '\0';
     address[strcspn(address, "\n")] = 0;
+	 system("cls");
+    int boxWidth = 90;
+    int textLen = strlen(address);
+    int leftPadding = (boxWidth - textLen) / 2;
+    printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
+        printf("\n\n                                     Home Address:\n");
+    printf("\n                                  ------------------------------------------------------------------------------------------\n");
+    printf("                                 |%*s%s%*s|\n", leftPadding, "", address, boxWidth - textLen - leftPadding, "");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
 
-    {
-        int boxWidth = 90;
-        int textLen = strlen(address);
-        int leftPadding = (boxWidth - textLen) / 2;
-        system("cls");
-        printf("\n\n                                  Home Address:\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |%*s%s%*s|\n", leftPadding, "", address, boxWidth - textLen - leftPadding, "");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-    }
-
-    // ACCOUNT INFO: username
+    // USERNAME (FIXED)
     while (1) {
+    	
         printf("\n\n                                  Create Username:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |                                                                                          |\n");
@@ -239,18 +413,12 @@ int createAccount() {
         printf("\n                                  Type here: ");
         if (scanf(" %[^\n]", username) != 1) { clear_stdin(); continue; }
 
-        if (strcmp(username, "9") == 0) {
-            return 0;
-        }
-
         if (strlen(username) < 4) {
-            printf("\n                            (System): Username too short! Must be at least 4 characters.\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Username too short! Must be at least 4 characters.\n");
             getch();
             continue;
         }
 
-        // check if username already exists
         fp = fopen("accounts.txt", "r");
         if (fp) {
             struct Account tmp;
@@ -261,26 +429,30 @@ int createAccount() {
             }
             fclose(fp);
             if (exists) {
-                printf("\n                            (System): Username already exists. Choose another.\n");
-                printf("                            Press any key to try again...");
+                printf("\n(System): Username already exists.\n");
                 getch();
                 continue;
             }
         }
-
-        int boxWidth = 90;
-        int textLen = strlen(username);
-        int leftPadding = (boxWidth - textLen) / 2;
-
-        system("cls");
-        printf("\n\n                                  Create Username:\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
+		system("cls");
+        textLen = strlen(username);
+        leftPadding = (boxWidth - textLen) / 2;
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
+        printf("\n\n                                           Username:\n");
+        printf("\n                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |%*s%s%*s|\n", leftPadding, "", username, boxWidth - textLen - leftPadding, "");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         break;
     }
 
-    // PASSWORD with confirmation
+    // PASSWORD + CONFIRM (FIXED)
     while (1) {
         printf("\n\n                                  Create Password:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
@@ -290,11 +462,24 @@ int createAccount() {
         inputPassword(password);
 
         if (strlen(password) < 4) {
-            printf("\n                            (System): Password too short! Must be at least 4 characters.\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Password too short!\n");
             getch();
             continue;
         }
+		system("cls");
+        textLen = strlen(password);
+        leftPadding = (boxWidth - textLen) / 2;
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
+        printf("\n                                  ------------------------------------------------------------------------------------------\n");
+        printf("                                 |%*s%s%*s|\n", leftPadding, "", "********", boxWidth - 8 - leftPadding, ""); // hide actual pass
+        printf("                                  ------------------------------------------------------------------------------------------\n");
 
         printf("\n\n                                  Confirm Password:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
@@ -304,21 +489,14 @@ int createAccount() {
         inputPassword(confirmPassword);
 
         if (strcmp(password, confirmPassword) != 0) {
-            printf("\n                            (System): Passwords do not match! Try again.\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Passwords do not match!\n");
             getch();
             continue;
         }
-
-        system("cls");
-        printf("\n\n                                  Password Successfully Set!\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |%*s%s%*s|\n", 40 - 4, "", "********", 40 - 4, ""); // masked display
-        printf("                                  ------------------------------------------------------------------------------------------\n");
         break;
     }
 
-    // ROLE and COURSE
+    // ROLE + COURSE (unchanged)
     while (1) {
         printf("\n\n                                  Role (Student/Staff):\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
@@ -331,32 +509,70 @@ int createAccount() {
         for (int i = 1; role[i]; i++) role[i] = tolower((unsigned char)role[i]);
 
         if (strcmp(role, "Student") != 0 && strcmp(role, "Staff") != 0) {
-            printf("\n                            (System): Please enter either 'Student' or 'Staff'\n");
-            printf("                            Press any key to try again...");
+            printf("\n(System): Please enter either 'Student' or 'Staff'\n");
             getch();
             continue;
         }
 
         if (strcmp(role, "Student") == 0) {
-            printf("\n\n                                  Course (e.g., BSIT):\n");
-            printf("                                  ------------------------------------------------------------------------------------------\n");
-            printf("                                 |                                                                                          |\n");
-            printf("                                  ------------------------------------------------------------------------------------------\n");
-            printf("\n                                  Type here: ");
-            if (scanf(" %[^\n]", course) != 1) strcpy(course, "-");
+            while (1) {
+                system("cls");
+                printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+                printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+                printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+                printf("                  |                                                     COURSE SELECTION                                                 |\n");
+                printf("                  +====================================================================================================================+\n\n");
+                printf("                                    ===========================================================================================\n");
+                printf("                                    |               Please choose your course:                                                |\n");
+                printf("                                    |-------------------------------------------------------------------------------------------|\n");
+                printf("                                    |               [1] BSCS      - Computer Science                                           |\n");
+                printf("                                    |               [2] BSOA      - Office Administration                                      |\n");
+                printf("                                    |               [3] BSVTVTED  - Vocational Tech Education                                  |\n");
+                printf("                                    ===========================================================================================\n\n");
+                printf("                                                   Press [1], [2], or [3] to select your course.\n");
+                printf("                                                   Press [9] to go back.\n");
+
+                char ch = getch();
+
+                if (ch == '1') strcpy(course, "BSCS");
+                else if (ch == '2') strcpy(course, "BSOA");
+                else if (ch == '3') strcpy(course, "BSVTVTED");
+                else if (ch == '9') {
+                    system("cls");
+                    printf("\n(System): Returning to Role selection...\n");
+                    Sleep(1000);
+                    continue;
+                } else {
+                    printf("\n(System): Invalid choice! Please press 1, 2, or 3.\n");
+                    Sleep(1000);
+                    continue;
+                }
+
+                int textLen = strlen(course);
+                int leftPadding = (90 - textLen) / 2;
+
+                system("cls");
+                printf("\n\n                                  Course Selected:\n");
+                printf("                                  ------------------------------------------------------------------------------------------\n");
+                printf("                                 |%*s%s%*s|\n", leftPadding, "", course, 90 - textLen - leftPadding, "");
+                printf("                                  ------------------------------------------------------------------------------------------\n");
+                Sleep(1000);
+                break;
+            }
         } else {
             strcpy(course, "-");
+            printf("\n(System): Staff role selected. No course required.\n");
+            Sleep(1000);
         }
         break;
     }
 
-    // SAVE to file
+    // SAVE ACCOUNT
     fp = fopen("accounts.txt", "a");
     if (fp == NULL) {
-        printf("\n(System): Unable to open accounts file for writing.\n");
+        printf("\n(System): Unable to open file for writing.\n");
         return 0;
     }
-    // Format: username,password,role,course,firstName,lastName\n
     fprintf(fp, "%s,%s,%s,%s,%s,%s\n", username, password, role, course, firstName, lastName);
     fclose(fp);
 
@@ -369,12 +585,21 @@ int createAccount() {
     return 0;
 }
 
-/* inputPassword: reads characters and prints '*' while typing; Enter ends input */
+
+
+
+
+
+
+
+
+
+
 void inputPassword(char *pass) {
     int i = 0;
     char ch;
-    while ((ch = getch()) != 13) { // Enter key
-        if (ch == 8 && i > 0) {    // Backspace
+    while ((ch = getch()) != 13) {
+        if (ch == 8 && i > 0) {
             printf("\b \b");
             i--;
         } else if (ch >= 32 && ch <= 126 && i < 49) {
@@ -386,7 +611,16 @@ void inputPassword(char *pass) {
     printf("\n");
 }
 
-/* loadingScreen: simple loading animation */
+
+
+
+
+
+
+
+
+
+
 void loadingScreen() {
     int i;
     printf("Loading: ");
@@ -397,7 +631,15 @@ void loadingScreen() {
     printf(" 100%%\n");
 }
 
-/* loginAccount: reads accounts.txt and tries to match username/password */
+
+
+
+
+
+
+
+
+
 void loginAccount() {
     struct Account acc;
     char username[50], password[50];
@@ -406,47 +648,24 @@ void loginAccount() {
 
     while (attempts < 3) {
         system("cls");
-
-        // Open file
         fp = fopen("accounts.txt", "r");
         if (fp == NULL) {
             printf("\n(System): No accounts found. Please create one first.\n");
-            printf("Press any key to return...");
             getch();
             return;
         }
 
-        // HEADER DESIGN
-        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
-        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
-        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
-        printf("                  |                                               * --------------------- / ---------------- /                            |\n");
-        printf("                  |                                                          LOGIN ACCOUNT                                                  |\n");
-        printf("                  +====================================================================================================================+\n\n");
-
-        // USERNAME INPUT
-        printf("\n\n                                  Enter Username:\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |                                                                                          |\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("\n                                  Type here: ");
+        printf("\n\nEnter Username: ");
         clear_stdin();
-        if (!fgets(username, sizeof(username), stdin)) { username[0] = '\0'; }
-        username[strcspn(username, "\n")] = 0; // remove newline
+        if (!fgets(username, sizeof(username), stdin)) username[0] = '\0';
+        username[strcspn(username, "\n")] = 0;
 
-        // PASSWORD INPUT
-        printf("\n\n                                  Enter Password:\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |                                                                                          |\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("\n                                  Type here: ");
+        printf("Enter Password: ");
         inputPassword(password);
 
         foundUser = 0;
         passwordMatch = 0;
 
-        // SEARCH ACCOUNT IN FILE (format: username,password,role,course,firstName,lastName)
-        rewind(fp);
         while (fscanf(fp, "%49[^,],%49[^,],%19[^,],%49[^,],%49[^,],%49[^\n]\n",
                       acc.username, acc.password, acc.role, acc.course, acc.firstName, acc.lastName) == 6) {
             if (strcmp(username, acc.username) == 0) {
@@ -459,44 +678,43 @@ void loginAccount() {
         }
         fclose(fp);
 
-        // VERIFY LOGIN STATUS
         if (!foundUser) {
-            printf("\n\n                            (System): Username not found! Try again.\n");
+            printf("\n(System): Username not found!\n");
             attempts++;
         } else if (!passwordMatch) {
-            printf("\n\n                            (System): Incorrect password! Try again.\n");
+            printf("\n(System): Incorrect password!\n");
             attempts++;
         } else {
-            printf("\n\n                            (System): Logging in...");
+            printf("\n(System): Logging in...");
             loadingScreen();
             system("cls");
-            printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
-            printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
-            printf("                  +----------------------------------------------------------------------------------------------------------------------\n");
-            printf("\n");
-            printf("                                    \x1b[32mLogin Successful!\x1b[0m Welcome, %s (%s)", acc.username, acc.role);
-            if (strcmp(acc.role, "Student") == 0 && strlen(acc.course) > 0 && strcmp(acc.course, "-") != 0)
+            printf("Login Successful! Welcome, %s (%s)", acc.username, acc.role);
+            if (strcmp(acc.role, "Student") == 0 && strcmp(acc.course, "-") != 0)
                 printf(" - %s", acc.course);
-            printf("\n\n                                    Press any key to continue...");
+            printf("\nPress any key to continue...");
             getch();
             return;
         }
 
-        // RETRY HANDLING
         if (attempts < 3) {
-            printf("\n\n                            Attempts left: %d", 3 - attempts);
-            printf("\n                            Press any key to try again...");
+            printf("\nAttempts left: %d\n", 3 - attempts);
+            printf("Press any key to try again...");
             getch();
         } else {
-            printf("\n\n                            (System): Too many failed attempts.\n");
-            printf("                            Returning to main menu...");
+            printf("\nToo many failed attempts. Returning to main menu...");
             Sleep(2000);
             return;
         }
     }
 }
 
-/* forgotPassword: reveals password for a username (simple, not secure) */
+
+
+
+
+
+
+
 void forgotPassword() {
     struct Account acc;
     char username[50];
@@ -505,6 +723,7 @@ void forgotPassword() {
 
     if (fp == NULL) {
         printf("\n(System): No accounts found.\n");
+        getch();
         return;
     }
 
@@ -513,7 +732,6 @@ void forgotPassword() {
     if (!fgets(username, sizeof(username), stdin)) username[0] = '\0';
     username[strcspn(username, "\n")] = 0;
 
-    // File format: username,password,role,course,firstName,lastName
     while (fscanf(fp, "%49[^,],%49[^,],%19[^,],%49[^,],%49[^,],%49[^\n]\n",
                   acc.username, acc.password, acc.role, acc.course, acc.firstName, acc.lastName) == 6) {
         if (strcmp(username, acc.username) == 0) {
@@ -527,4 +745,7 @@ void forgotPassword() {
         printf("\n(System): Your password is: %s\n", acc.password);
     else
         printf("\n(System): Username not found.\n");
+
+    printf("Press any key to return...");
+    getch();
 }
