@@ -12,7 +12,11 @@ struct Account {
     char course[50];
     char firstName[50];
     char lastName[50];
+    char Department[50];
 };
+
+
+
 
 void menu();
 int createAccount();
@@ -23,7 +27,7 @@ void loadingScreen();
 void clear_stdin();
 void EDUC_Regular_Schedule();
 void BSOA_Regular_Schedule();
-
+void schduleDepartment();
 
 
 int main() {
@@ -41,7 +45,7 @@ void EDUC_Regular_Schedule() {
 	printf("                     |×|                                              WEEKLY SCHEDULE                                                   |×|\n");
 	printf("                     |×|                                              COURSE: EDUC FIRST YEAR                                          |×|\n");
 	printf("                     |×|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|×|\n");
-	printf("                     |×|          ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇   |×|\n");
+	printf("                     |×|          ?     ?     ?     ?     ?     ?     ?     ?      ?      ?      ?      ?      ?      ?      ?      ?      ?   |×|\n");
 	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~|×|\n");
 	printf("                     |×|      TIME       |     MONDAY   |    TUESDAY    |   WEDNESDAY   |   THURSDAY    |     FRIDAY    |    SATURDAY   |×|\n");
 	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
@@ -100,7 +104,7 @@ void BSOA_Regular_Schedule() {
 	printf("                     |×|                                              WEEKLY SCHEDULE                                                   |×|\n");
 	printf("                     |×|                                              COURSE: BSOA                                                      |×|\n");
 	printf("                     |×|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|×|\n");
-	printf("                     |×|          ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇     ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇      ⌇   |×|\n");
+	printf("                     |×|          ?     ?     ?     ?     ?     ?     ?     ?      ?      ?      ?      ?      ?      ?      ?      ?      ?   |×|\n");
 	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~~~×~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~|×|\n");
 	printf("                     |×|      TIME       |     MONDAY   |    TUESDAY    |   WEDNESDAY   |   THURSDAY    |     FRIDAY    |    SATURDAY   |×|\n");
 	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~~|×|\n");
@@ -142,7 +146,6 @@ void BSOA_Regular_Schedule() {
 	printf("                     |×|~~~~~~~~~~~~~~~~~×~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~|×|\n");
 	printf("                     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 }
-
 
 
 
@@ -214,7 +217,7 @@ void menu() {
 int createAccount() {
     char firstName[50], lastName[50], birthD[20], sex[10], address[200];
     char username[50], password[50], confirmPassword[50];
-    char role[20], course[50];
+    char role[20], course[50],department[50];
     FILE *fp;
 
     // FIRST NAME
@@ -452,7 +455,7 @@ int createAccount() {
         break;
     }
 
-    // PASSWORD + CONFIRM (FIXED)
+    
     while (1) {
         printf("\n\n                                  Create Password:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
@@ -498,7 +501,8 @@ int createAccount() {
 
     // ROLE + COURSE (unchanged)
     while (1) {
-        printf("\n\n                                  Role (Student/Staff):\n");
+    	
+        printf("\n\n                                  Role (Student/Faculty/Admin):\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |                                                                                          |\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
@@ -508,12 +512,79 @@ int createAccount() {
         role[0] = toupper((unsigned char)role[0]);
         for (int i = 1; role[i]; i++) role[i] = tolower((unsigned char)role[i]);
 
-        if (strcmp(role, "Student") != 0 && strcmp(role, "Staff") != 0) {
-            printf("\n(System): Please enter either 'Student' or 'Staff'\n");
+        if (strcmp(role, "Student") != 0 && strcmp(role, "Faculty") != 0 && strcmp(role, "Admin") != 0) {
+            printf("\n(System): Please enter either 'Student' or 'Faculty' and 'Admin'\n");
             getch();
             continue;
         }
+		
 
+
+
+		
+		if (strcmp(role, "Faculty") == 0){
+
+
+
+
+			
+			while (1){
+				system("cls");
+                printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+                printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+                printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+                printf("                  |                                                 DEPARTMENT SELECTION                                                 |\n");
+                printf("                  +====================================================================================================================+\n\n");
+                printf("                                    ===========================================================================================\n");
+                printf("                                    |               Please choose your course:                                                |\n");
+                printf("                                    |-------------------------------------------------------------------------------------------|\n");
+                printf("                                    |               [C] COMPUTER SCIENCE DEPARTMENT                                           |\n");
+                printf("                                    |               [O] OFFFICE ADMINISTRATION DEPARTMENT                                     |\n");
+                printf("                                    |               [T] TEACHER EDUCATION DEPARTMENT                                          |\n");
+                printf("                                    ===========================================================================================\n\n");
+                printf("                                                   Press [C], [O], or [T] to select your course.\n");
+                printf("                                                   Press [9] to go back.\n");
+
+                char ch = getch();
+                
+                if (strcmp(role, "Faculty") == 0) {
+    while (1) {
+        system("cls");
+        printf("... DEPARTMENT SELECTION ...\n");
+        char ch = getch();
+
+        if (ch == 'c' || ch == 'C')
+            strcpy(department, "COMPUTER SCIENCE DEPARTMENT");
+        else if (ch == 'o' || ch == 'O')
+            strcpy(department, "OFFICE ADMINISTRATION DEPARTMENT");
+        else if (ch == 't' || ch == 'T')
+            strcpy(department, "TEACHER EDUCATION DEPARTMENT");
+        else if (ch == '9') {
+            system("cls");
+            printf("\n(System): Returning to role selection...\n");
+            Sleep(2000);
+            break;
+        } else {
+            printf("\n(System): Invalid choice! Please try again.\n");
+            Sleep(1000);
+            continue;
+        }
+
+        printf("\nSelected Department: %s\n", department);
+        Sleep(1000);
+        break;
+    }
+}
+
+                
+                
+			}
+			
+			
+			
+			
+		}
+		
         if (strcmp(role, "Student") == 0) {
             while (1) {
                 system("cls");
@@ -748,4 +819,14 @@ void forgotPassword() {
 
     printf("Press any key to return...");
     getch();
+    
+    
+    
+    
+   
+ 
+    
+    
+    
+    
 }
