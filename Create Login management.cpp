@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <windows.h>
 #include <ctype.h>
+#include <time.h>
 
 struct Account {
     char username[50];
@@ -13,6 +14,7 @@ struct Account {
     char firstName[50];
     char lastName[50];
     char Department[50];
+    char idNumber[20];
 };
 
 
@@ -28,7 +30,7 @@ void clear_stdin();
 void EDUC_Regular_Schedule();
 void BSOA_Regular_Schedule();
 void schduleDepartment();
-
+void generateId(const char* role, const char* department, char* idNumber);
 
 int main() {
     menu();
@@ -218,6 +220,7 @@ int createAccount() {
     char firstName[50], lastName[50], birthD[20], sex[10], address[200];
     char username[50], password[50], confirmPassword[50];
     char role[20], course[50],department[50];
+    char idNumber[20];
     FILE *fp;
 
     // FIRST NAME
@@ -500,8 +503,7 @@ int createAccount() {
     }
 
     // ROLE + COURSE (unchanged)
-    while (1) {
-    	
+     while (1) {
         printf("\n\n                                  Role (Student/Faculty/Admin):\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |                                                                                          |\n");
@@ -517,19 +519,10 @@ int createAccount() {
             getch();
             continue;
         }
-		
 
-
-
-		
-		if (strcmp(role, "Faculty") == 0){
-
-
-
-
-			
-			while (1){
-				system("cls");
+        if (strcmp(role, "Faculty") == 0) {
+            while (1) {
+                system("cls");
                 printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
                 printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
                 printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
@@ -546,45 +539,30 @@ int createAccount() {
                 printf("                                                   Press [9] to go back.\n");
 
                 char ch = getch();
-                
-                if (strcmp(role, "Faculty") == 0) {
-    while (1) {
-        system("cls");
-        printf("... DEPARTMENT SELECTION ...\n");
-        char ch = getch();
 
-        if (ch == 'c' || ch == 'C')
-            strcpy(department, "COMPUTER SCIENCE DEPARTMENT");
-        else if (ch == 'o' || ch == 'O')
-            strcpy(department, "OFFICE ADMINISTRATION DEPARTMENT");
-        else if (ch == 't' || ch == 'T')
-            strcpy(department, "TEACHER EDUCATION DEPARTMENT");
-        else if (ch == '9') {
-            system("cls");
-            printf("\n(System): Returning to role selection...\n");
-            Sleep(2000);
-            break;
-        } else {
-            printf("\n(System): Invalid choice! Please try again.\n");
-            Sleep(1000);
-            continue;
+                if (ch == 'c' || ch == 'C')
+                    strcpy(department, "COMPUTER SCIENCE DEPARTMENT");
+                else if (ch == 'o' || ch == 'O')
+                    strcpy(department, "OFFICE ADMINISTRATION DEPARTMENT");
+                else if (ch == 't' || ch == 'T')
+                    strcpy(department, "TEACHER EDUCATION DEPARTMENT");
+                else if (ch == '9') {
+                    system("cls");
+                    printf("\n(System): Returning to role selection...\n");
+                    Sleep(2000);
+                    break;
+                } else {
+                    printf("\n(System): Invalid choice! Please try again.\n");
+                    Sleep(1000);
+                    continue;
+                }
+
+                printf("\nSelected Department: %s\n", department);
+                Sleep(1000);
+                break;
+            }
         }
 
-        printf("\nSelected Department: %s\n", department);
-        Sleep(1000);
-        break;
-    }
-}
-
-                
-                
-			}
-			
-			
-			
-			
-		}
-		
         if (strcmp(role, "Student") == 0) {
             while (1) {
                 system("cls");
@@ -637,19 +615,26 @@ int createAccount() {
         }
         break;
     }
-	loadingScreen();
-    // SAVE ACCOUNT
+
+    // ✅ Generate ID
+    generateId(role, (strcmp(role, "Student") == 0) ? course : department, idNumber);
+	system("cls");
+    loadingScreen();
+
+    // ✅ Save to file (with ID)
     fp = fopen("accounts.txt", "a");
     if (fp == NULL) {
         printf("\n(System): Unable to open file for writing.\n");
         return 0;
     }
-    fprintf(fp, "%s,%s,%s,%s,%s,%s\n", username, password, role, course, firstName, lastName);
+    fprintf(fp, "%s,%s,%s,%s,%s,%s,%s\n",
+            username, password, role, course, firstName, lastName, idNumber);
     fclose(fp);
 
     printf("\n\n(System): Account created successfully!\n");
     printf("Username: %s\n", username);
     printf("Role: %s %s\n", role, (strcmp(course, "-") == 0) ? "" : course);
+    printf("Generated ID: %s\n", idNumber); // ✅ show the ID
     printf("Press any key to continue...");
     getch();
 
@@ -829,4 +814,36 @@ void forgotPassword() {
     
     
     
+}
+
+
+
+
+
+
+
+
+void generateId(const char* role, const char* department, char* idNumber) {
+    srand(time(NULL));
+    char prefix[5];
+    int randomNum = rand() % 900000 + 100000; // 6-digit random number
+
+    if (strcmp(role, "Student") == 0) {
+        if (strstr(department, "Computer Science") || strstr(department, "BSCS"))
+            strcpy(prefix, "CS");
+        else if (strstr(department, "Office") || strstr(department, "BSOA"))
+            strcpy(prefix, "OA");
+        else if (strstr(department, "Teacher") || strstr(department, "BSVTVTED"))
+            strcpy(prefix, "ED");
+        else
+            strcpy(prefix, "STU");
+    } else if (strcmp(role, "Faculty") == 0) {
+        strcpy(prefix, "FAC");
+    } else if (strcmp(role, "Admin") == 0) {
+        strcpy(prefix, "ADM");
+    } else {
+        strcpy(prefix, "GEN");
+    }
+
+    sprintf(idNumber, "%s-%d", prefix, randomNum);
 }
