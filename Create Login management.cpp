@@ -15,6 +15,7 @@ struct Account {
     char lastName[50];
     char Department[50];
     char idNumber[20];
+    char email[50];
 };
 
 
@@ -217,7 +218,7 @@ void menu() {
 
 
 int createAccount() {
-    char firstName[50], lastName[50], birthD[20], sex[10], address[200];
+    char firstName[50], lastName[50], birthD[20], sex[10], address[200],email[50];
     char username[50], password[50], confirmPassword[50];
     char role[20], course[50],department[50];
     char idNumber[20];
@@ -408,7 +409,44 @@ int createAccount() {
     printf("\n                                  ------------------------------------------------------------------------------------------\n");
     printf("                                 |%*s%s%*s|\n", leftPadding, "", address, boxWidth - textLen - leftPadding, "");
     printf("                                  ------------------------------------------------------------------------------------------\n");
+     
+     
+     while (1) {
+        printf("\n\n                                  Enter Email:\n");
+        printf("                                  ------------------------------------------------------------------------------------------\n");
+        printf("                                 |                                                                                          |\n");
+        printf("                                  ------------------------------------------------------------------------------------------\n");
+        printf("\n                                  Type here: ");
+        if (scanf(" %[^\n]", email) != 1) { clear_stdin(); continue; }
 
+        if (! strchr(email, '@') || ! strchr (email,'.')) {
+            printf("\n(System): Please enter @gmail.com (etc.).\n");
+            getch();
+            continue;
+        }
+
+        int boxWidth = 90;
+        int textLen = strlen(email);
+        int leftPadding = (boxWidth - textLen) / 2;
+
+        system("cls");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                       * --------------------- / ---------------- /                       [ 9 ] Back  |\n");
+        printf("                  |                              Personal Information     Account information     Position                               |\n");
+        printf("                  +======================================================================================================================+\n");
+        printf("                                                                   |Personal Information|\n");
+        printf("                                                                   +====================+\n");
+        printf("\n\n                                  Enter LASTNAME:\n");
+        printf("                                  ------------------------------------------------------------------------------------------\n");
+        printf("                                 |%*s%s%*s|\n", leftPadding, "", email, boxWidth - textLen - leftPadding, "");
+        printf("                                  ------------------------------------------------------------------------------------------\n");
+        break;
+    }
+
+     
+     
     // USERNAME (FIXED)
     while (1) {
     	
@@ -616,12 +654,12 @@ int createAccount() {
         break;
     }
 
-    // ✅ Generate ID
+    // ? Generate ID
     generateId(role, (strcmp(role, "Student") == 0) ? course : department, idNumber);
 	system("cls");
     loadingScreen();
 
-    // ✅ Save to file (with ID)
+    // ? Save to file (with ID)
     fp = fopen("accounts.txt", "a");
     if (fp == NULL) {
         printf("\n(System): Unable to open file for writing.\n");
@@ -634,7 +672,7 @@ int createAccount() {
     printf("\n\n(System): Account created successfully!\n");
     printf("Username: %s\n", username);
     printf("Role: %s %s\n", role, (strcmp(course, "-") == 0) ? "" : course);
-    printf("Generated ID: %s\n", idNumber); // ✅ show the ID
+    printf("Generated ID: %s\n", idNumber); 
     printf("Press any key to continue...");
     getch();
 
@@ -680,7 +718,7 @@ void inputPassword(char *pass) {
 void loadingScreen() {
     int i;
     printf("Loading: ");
-    for (i = 0; i <= 20; i++) {
+    for (i = 0; i <= 40; i++) {
         printf("%c", 219);
         Sleep(50);
     }
@@ -700,6 +738,7 @@ void loginAccount() {
     struct Account acc;
     char username[50], password[50];
     int foundUser = 0, passwordMatch = 0, attempts = 0;
+    
     FILE *fp;
 
     while (attempts < 3) {
@@ -742,11 +781,14 @@ void loginAccount() {
             attempts++;
         } else {
             printf("\n(System): Logging in...");
+            Sleep(800);
+            system("cls");
             loadingScreen();
             system("cls");
-            printf("Login Successful! Welcome, %s (%s)", acc.username, acc.role);
+            printf("Login Successful! Welcome, %s (%s)", acc.username, acc.role,generateId);
             if (strcmp(acc.role, "Student") == 0 && strcmp(acc.course, "-") != 0)
                 printf(" - %s", acc.course);
+            	
             printf("\nPress any key to continue...");
             getch();
             return;
@@ -847,3 +889,8 @@ void generateId(const char* role, const char* department, char* idNumber) {
 
     sprintf(idNumber, "%s-%d", prefix, randomNum);
 }
+
+
+
+
+ 
