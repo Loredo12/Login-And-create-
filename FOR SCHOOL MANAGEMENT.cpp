@@ -148,7 +148,7 @@ void menu() {
     while (1) {
         system("cls");
         printf("\033[36;5m");
-      system("color D9");
+      system("color E9");
     printf("                  [-]********************************************************************************************************************[-]\n");
     printf("                  [-]                                                                                                                    [-]\n");
     printf("                  [-]                                           P   H   I   L   T   E   C   H                                            [-]\n");
@@ -812,7 +812,7 @@ void editProfile(struct Account *acc) {
 void showStudentProfile(struct Account *acc) {
     system("cls");
     printf("\033[36;5m");
-      system("color D9");
+      system("color E9");
     printf("                  [-]***************************************************************************************[-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]             S   T   U   D   E   N   T     P   R   O   F   I   L   E                   [-]\n");
@@ -863,6 +863,7 @@ void showStudentProfile(struct Account *acc) {
 void showFacultyProfile(struct Account *acc) {
     system("cls");
     printf("\033[36;5m");
+    system("color E9");
       printf("                  [-]***************************************************************************************[-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]             F   A   C   U   L   T   Y     P   R   O   F   I   L   E                   [-]\n");
@@ -908,6 +909,7 @@ void studentDashboard(struct Account *acc) {
     while (1) {
         system("cls");
         printf("\033[36;5m");
+        system("color E9");
      printf("                  [-]***************************************************************************************[-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]          S   T   U   D   E   N   T     D   A   S   H   B   O   A   R   D              [-]\n");
@@ -986,6 +988,7 @@ void facultyDashboard(struct Account *acc) {
     while (1) {
         system("cls");
         printf("\033[36;5m");
+        system("color E9");
         printf("                  [-]***************************************************************************************[-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]         F   A   C   U   L   T   Y     D   A   S   H   B   O   A   R   D               [-]\n");
@@ -1101,6 +1104,7 @@ void adminDashboard(struct Account *acc) {
     while (1) {
         system("cls");
         printf("\033[36;5m");
+        system("color E9");
         printf("                  [-]***************************************************************************************[-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]                A   D   M   I   N     D   A   S   H   B   O   A   R   D                [-]\n");
@@ -1529,6 +1533,7 @@ void loginAccount() {
 
 void aboutUs(struct Account *acc) {
 	char user;
+	char Department, Admin;
 	system("cls"); // clear console
 	printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
     printf("                  |                                                                                                                      |\n");
@@ -1575,7 +1580,7 @@ void aboutUs(struct Account *acc) {
     
     getch();
     
- 
+ 	
 }
 
 
