@@ -40,7 +40,7 @@ void EDUC_Regular_Schedule();
 
 
 void aboutUs(struct Account *acc);
-void registrarDash();
+void registrarDash(struct Account *acc);
 void studentDashboard(struct Account *acc);
 void facultyDashboard(struct Account *acc);
 void adminDashboard(struct Account *acc);
@@ -93,7 +93,8 @@ void inputPassword(char *pass) {
 
 void loadingScreen() {
     int i;
-    printf("Loading: ");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    printf("                                 Loading: ");
     for (i = 0; i <= 40; i++) {
         printf("%c", 219);
         Sleep(20);
@@ -513,13 +514,13 @@ int createAccount() {
     printf("                  [-]                                                                                       [-]\n"); 
 	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
 	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [1] COMPUTER SCIENCE                                              [-]\n");
+	printf("                  [-]                     [C] COMPUTER SCIENCE                                              [-]\n");
 	printf("                  [-]                                                                                       [-]\n");
 	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [2] OFFICE ADMIN                                                  [-]\n");
+	printf("                  [-]                     [O] OFFICE ADMIN                                                  [-]\n");
 	printf("                  [-]                                                                                       [-]\n");
 	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [3] TEACHER EDUCATION                                             [-]\n");
+	printf("                  [-]                     [T] TEACHER EDUCATION                                             [-]\n");
 	printf("                  [-]                                                                                       [-]\n");
 	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
     printf("                  [-]                                                                                       [-]\n");
@@ -1428,7 +1429,7 @@ void loginAccount() {
     while (attempts < 3) {
         system("cls");
         printf("\033[36;5m");
-        system("color D9");
+        system("color E9");
         fp = fopen(ACC_FILE, "r");
         if (fp == NULL) {
             printf("\n(System): No accounts found. Please create one first.\n");
@@ -1508,7 +1509,7 @@ void loginAccount() {
             } else if (strcmp(acc.role, "Faculty") == 0) {
                 facultyDashboard(&acc);
             } else if (strcmp (acc.role, "Admin")== 0){ 
-                registrarDash();
+                registrarDash(&acc);
             }else {
             	adminDashboard(&acc);
 			}
@@ -1534,7 +1535,7 @@ void loginAccount() {
 void aboutUs(struct Account *acc) {
 	char user;
 	char Department, Admin;
-	system("cls"); // clear console
+	system("cls"); 
 	printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
     printf("                  |                                                                                                                      |\n");
     printf("                  |                                                   P H I L T E C H                                                    |\n");
@@ -1585,6 +1586,55 @@ void aboutUs(struct Account *acc) {
 
 
 
-void registrarDash(){
-	printf("qweqweqweqw");
+void registrarDash(struct Account *acc){
+
+    char ch;
+    while (1) {
+        system("cls");
+        printf("\033[36;5m");
+        system("color E9");
+    printf("                  [-]***************************************************************************************[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]               R E G I S T R A R      D   A   S   H   B   O   A   R   D                [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]***************************************************************************************[-]\n");    
+    printf("                  [-]          Welcome Resgistar: %s %s                                                     [-]\n", acc->firstName, acc->lastName);                     
+	printf("                  [-]                                                                                       [-]\n");
+	printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);                                                                
+	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+	printf("                  [-]                     [1] VIEW ALL ACOOUNT                                              [-]\n");
+	printf("                  [-]                                                                                       [-]\n");
+	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+	printf("                  [-]                     [2] CHANGE PASSWORD                                               [-]\n");
+	printf("                  [-]                                                                                       [-]\n");
+	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+	printf("                  [-]                     [3] LOGOUT                                                        [-]\n");
+	printf("                  [-]                                                                                       [-]\n");
+	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+	printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");   
+        printf("Enter choice: ");
+        ch = getch();
+        printf("%c\n", ch);
+        if (ch == '1') {
+            viewAllAccounts();
+        } else if (ch == '2') {
+            changePasswordAccount(acc);
+        } else if (ch == '3') {
+            printf("Logging out...\n");
+            loadingScreen();
+            Sleep(600);
+            return;
+        } else {
+        	system("cls");
+             invalid_Option();
+            getch();
+        }
+    }
+
 }
