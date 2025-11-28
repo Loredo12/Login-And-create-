@@ -604,6 +604,7 @@ int createAccount() {
 
  
     generateId(role, (strcmp(role, "Student") == 0) ? course : department, idNumber);
+    system("cls");
     loadingScreen();
 
        fp = fopen(ACC_FILE, "a");
@@ -1638,3 +1639,4 @@ void registrarDash(struct Account *acc){
     }
 
 }
+
