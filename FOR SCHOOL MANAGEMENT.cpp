@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>#include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,7 +38,7 @@ void BSCS1_Regular_Schedule();
 void BSOA_Regular_Schedule();
 void EDUC_Regular_Schedule();
 
-
+void enrollmentForm();
 void aboutUs(struct Account *acc);
 void registrarDash(struct Account *acc);
 void studentDashboard(struct Account *acc);
@@ -46,6 +46,7 @@ void facultyDashboard(struct Account *acc);
 void adminDashboard(struct Account *acc);
 
 
+void viewAttendance();
 void showStudentProfile(struct Account *acc);
 void showFacultyProfile(struct Account *acc);
 void editProfile(struct Account *acc);
@@ -942,7 +943,10 @@ void studentDashboard(struct Account *acc) {
     printf("                  [-]                     [5] CHANGE PASSWORD                                               [-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-    printf("                  [-]                     [6] LOGOUT                                                        [-]\n");
+    printf("                  [-]                     [6] CHANGE PASSWORD                                               [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+    printf("                  [-]                     [7] LOGOUT                                                        [-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
    	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
@@ -973,7 +977,10 @@ void studentDashboard(struct Account *acc) {
         	aboutUs(acc);
 		}else if (ch == '5') {
             changePasswordAccount(acc);
-        } else if (ch == '6') {
+        }else if (ch == '6'){
+        	 enrollmentForm();
+        	
+		} else if (ch == '7') {
             printf("Logging out...\n");
             Sleep(600);
             return;
@@ -985,46 +992,56 @@ void studentDashboard(struct Account *acc) {
     }
 }
 
+
+
+
+
+
 void facultyDashboard(struct Account *acc) {
     char ch;
+    time_t time_in, time_out;  // Variables to store login and logout times
+    
+    // Record time in (login time) at the start of the function
+    time(&time_in);
+    
     while (1) {
         system("cls");
         printf("\033[36;5m");
         system("color E9");
         printf("                  [-]***************************************************************************************[-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]         F   A   C   U   L   T   Y     D   A   S   H   B   O   A   R   D               [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]***************************************************************************************[-]\n");    
-    printf("                  [-]          Welcome Admin: %s %s                                                         [-]\n", acc->firstName, acc->lastName);
-	printf("                  [-]            Department: %s                                                             [-]\n" , acc->Department);
-	printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);
-	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [1] VIEW TEACHING SCHEDULE                                        [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [2] VIEW PROFILE                                                  [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [3] EDIT PROFILE                                                  [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [4] ABOUT US                                                      [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-    printf("                  [-]                     [5] CHANGE PASSWORD                                               [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-    printf("                  [-]                     [6] LOGOUT                                                        [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-    printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n"); 
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         F   A   C   U   L   T   Y     D   A   S   H   B   O   A   R   D               [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]***************************************************************************************[-]\n");    
+        printf("                  [-]          Welcome Admin: %s %s                                                         [-]\n", acc->firstName, acc->lastName);
+        printf("                  [-]            Department: %s                                                             [-]\n" , acc->Department);
+        printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [1] VIEW TEACHING SCHEDULE                                        [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [2] VIEW PROFILE                                                  [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [3] EDIT PROFILE                                                  [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [4] ABOUT US                                                      [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [5] CHANGE PASSWORD                                               [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [6] LOGOUT                                                        [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n"); 
         printf("Enter choice: ");
         ch = getch();
         printf("%c\n", ch);
@@ -1041,20 +1058,43 @@ void facultyDashboard(struct Account *acc) {
         } else if (ch == '3') {
             editProfile(acc);
         } else if (ch == '4'){
-        	aboutUs(acc);
-		} else if (ch == '5') {
+            aboutUs(acc);
+        } else if (ch == '5') {
             changePasswordAccount(acc);
         } else if (ch == '6') {
+            // Record time out (logout time)
+            time(&time_out);
+            
+            // Save time in and time out to a log file (e.g., time_log.txt)
+            // This appends to the file; you can change the filename or path as needed
+            FILE *fp = fopen("time_log.txt", "a");
+            if (fp != NULL) {
+                // Use ctime to convert time_t to a readable string
+                // ctime includes a newline, so we trim it for better formatting
+                char *time_in_str = ctime(&time_in);
+                char *time_out_str = ctime(&time_out);
+                if (time_in_str[strlen(time_in_str) - 1] == '\n') time_in_str[strlen(time_in_str) - 1] = '\0';
+                if (time_out_str[strlen(time_out_str) - 1] == '\n') time_out_str[strlen(time_out_str) - 1] = '\0';
+                
+                fprintf(fp, "ID: %s, Time In: %s, Time Out: %s\n", acc->idNumber, time_in_str, time_out_str);
+                fclose(fp);
+            } else {
+                // Optional: Handle file open error (e.g., print a message)
+                printf("Error: Could not open time log file.\n");
+            }
+            
             printf("Logging out...\n");
             Sleep(600);
             return;
+
         } else {
-        	system("cls");
+            system("cls");
             invalid_Option();
             getch();
         }
     }
 }
+
 
 void viewAllAccounts() {
     FILE *fp = fopen(ACC_FILE, "r");
@@ -1103,35 +1143,46 @@ void deleteAllUserData() {
 
 void adminDashboard(struct Account *acc) {
     char ch;
+    time_t time_in, time_out;  // Variables to store login and logout times
+    
+    // Record time in (login time) at the start of the function
+    time(&time_in);
+    
     while (1) {
         system("cls");
         printf("\033[36;5m");
         system("color E9");
         printf("                  [-]***************************************************************************************[-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]                A   D   M   I   N     D   A   S   H   B   O   A   R   D                [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]***************************************************************************************[-]\n");    
-    printf("                  [-]          Welcome Admin: %s %s                                                         [-]\n", acc->firstName, acc->lastName);                     
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);                                                                
-	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [1] VIEW ALL ACOOUNT                                              [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [2] CHANGE PASSWORD                                               [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [3] LOGOUT                                                        [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");   
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]                A   D   M   I   N     D   A   S   H   B   O   A   R   D                [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]***************************************************************************************[-]\n");    
+        printf("                  [-]          Welcome Admin: %s %s                                                         [-]\n", acc->firstName, acc->lastName);                     
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);                                                                
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [1] VIEW ALL ACOOUNT                                              [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [2] CHANGE PASSWORD                                               [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [3] LOGOUT                                                        [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [4] VIEW ATTENDANCE                                               [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [5] ABOUT                                                         [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");   
         printf("Enter choice: ");
         ch = getch();
         printf("%c\n", ch);
@@ -1140,16 +1191,42 @@ void adminDashboard(struct Account *acc) {
         } else if (ch == '2') {
             changePasswordAccount(acc);
         } else if (ch == '3') {
+            // Record time out (logout time)
+            time(&time_out);
+            
+            // Save time in and time out to a log file (e.g., time_log.txt)
+            // This appends to the file; you can change the filename or path as needed
+            FILE *fp = fopen("time_log.txt", "a");
+            if (fp != NULL) {
+                // Use ctime to convert time_t to a readable string
+                // ctime includes a newline, so we trim it for better formatting
+                char *time_in_str = ctime(&time_in);
+                char *time_out_str = ctime(&time_out);
+                if (time_in_str[strlen(time_in_str) - 1] == '\n') time_in_str[strlen(time_in_str) - 1] = '\0';
+                if (time_out_str[strlen(time_out_str) - 1] == '\n') time_out_str[strlen(time_out_str) - 1] = '\0';
+                
+                fprintf(fp, "ID: %s, Time In: %s, Time Out: %s\n", acc->idNumber, time_in_str, time_out_str);
+                fclose(fp);
+            } else {
+                // Optional: Handle file open error (e.g., print a message)
+                printf("Error: Could not open time log file.\n");
+            }
+            
             printf("Logging out...\n");
             Sleep(600);
             return;
-        } else {
-        	system("cls");
-             invalid_Option();
+        } else if (ch == '4') {
+            viewAttendance();
+        }else if (ch == '5'){
+        	aboutUs(acc);
+		} else {
+            system("cls");
+            invalid_Option();
             getch();
         }
     }
 }
+
 
  
 
@@ -1587,38 +1664,164 @@ void aboutUs(struct Account *acc) {
 
 
 
-void registrarDash(struct Account *acc){
 
+
+void viewAttendance() {
+    system("cls");
+    printf("\033[36;5m");
+    system("color E9");
+    printf("                  [-]***************************************************************************************[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]                          A T T E N D A N C E   R E C O R D S                          [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    
+    FILE *fp = fopen("time_log.txt", "r");
+    if (fp != NULL) {
+        char line[256];
+        int recordCount = 0;
+        while (fgets(line, sizeof(line), fp)) {
+            printf("                  [-] %s", line);  
+            recordCount++;
+        }
+        fclose(fp);
+        if (recordCount == 0) {
+            printf("                  [-] No attendance records found.                                                         [-]\n");
+        }
+    } else {
+        printf("                  [-] Error: Could not open time log file.                                                 [-]\n");
+    }
+    
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-] Press any key to return to the dashboard...                                          [-]\n");
+    printf("                  [-]***************************************************************************************[-]\n");
+    getch();  
+}
+
+
+
+void viewEnrolledStudents() {
+    system("cls");
+    printf("\033[36;5m");
+    printf("                  [-]***************************************************************************************[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]                    V I E W   E N R O L L E D   S T U D E N T S                       [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    
+    FILE *fp = fopen(ACC_FILE, "r");
+    if (fp == NULL) {
+        printf("                  [-] Error: Could not open accounts file.                                                 [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-] Press any key to return...                                                           [-]\n");
+        printf("                  [-]***************************************************************************************[-]\n");
+        getch();
+        return;
+    }
+    
+    struct Account acc;
+    int count = 0;
+    printf("                  [-] No. | Name                  | ID Number       | Course      | Department              [-]\n");
+    printf("                  [-]-----+-----------------------+-----------------+-------------+-------------------------[-]\n");
+    
+    while (fscanf(fp, "%49[^,],%99[^,],%19[^,],%49[^,],%49[^,],%49[^,],%99[^,],%29[^,],%99[^,],%199[^\n]\n",
+                  acc.username, acc.password, acc.role, acc.course, acc.firstName,
+                  acc.lastName, acc.Department, acc.idNumber, acc.email, acc.address) == 10) {
+        if (strcmp(acc.role, "Student") == 0) {
+            count++;
+          
+            char nameBuffer[25]; 
+            char tempName[50];
+            sprintf(tempName, "%s %s", acc.firstName, acc.lastName);
+            if (strlen(tempName) <= 21) {
+                strcpy(nameBuffer, tempName);
+            } else {
+               
+                strncpy(nameBuffer, acc.firstName, 18);
+                nameBuffer[18] = '\0';
+                strcat(nameBuffer, "...");
+            }
+            
+            printf("                  [-] %-3d | %-21s | %-15s | %-11s | %-23s [-]\n",
+                   count, nameBuffer, acc.idNumber, acc.course, acc.Department);
+        }
+    }
+    fclose(fp);
+    
+    if (count == 0) {
+        printf("                  [-] No enrolled students found.                                                         [-]\n");
+    }
+    
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-] Total Enrolled Students: %d                                                           [-]\n", count);
+    printf("                  [-] Press any key to return to the dashboard...                                          [-]\n");
+    printf("                  [-]***************************************************************************************[-]\n");
+    getch();
+}
+
+// The rest of the code remains the same, but replace the placeholder viewEnrolledStudents() with this implementation.
+
+void viewPendingEnrollments() {
+  
+    printf("no pending enrollments...\n");
+
+    getch();
+}
+
+void viewBalances() {
+  
+    printf("no balances...\n");
+
+    getch();
+}
+
+void registrarDash(struct Account *acc) {
     char ch;
+    time_t time_in, time_out;  
+    
+   
+    time(&time_in);
+    
     while (1) {
         system("cls");
         printf("\033[36;5m");
         system("color E9");
-    printf("                  [-]***************************************************************************************[-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]               R E G I S T R A R      D   A   S   H   B   O   A   R   D                [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]***************************************************************************************[-]\n");    
-    printf("                  [-]          Welcome Resgistar: %s %s                                                     [-]\n", acc->firstName, acc->lastName);                     
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);                                                                
-	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [1] VIEW ALL ACOOUNT                                              [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [2] CHANGE PASSWORD                                               [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [3] LOGOUT                                                        [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");   
+        printf("                  [-]***************************************************************************************[-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]               R E G I S T R A R      D   A   S   H   B   O   A   R   D                [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]***************************************************************************************[-]\n");    
+        printf("                  [-]          Welcome Registrar: %s %s                                                     [-]\n", acc->firstName, acc->lastName);                     
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]            ID: %s                                                                     [-]\n" , acc->idNumber);                                                                
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [1] VIEW ALL ACCOUNT                                              [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [2] CHANGE PASSWORD                                               [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [3] LOGOUT                                                        [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [4] VIEW ATTENDANCE                                               [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [5] STUDENT RECORD                                                [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");   
         printf("Enter choice: ");
         ch = getch();
         printf("%c\n", ch);
@@ -1627,16 +1830,184 @@ void registrarDash(struct Account *acc){
         } else if (ch == '2') {
             changePasswordAccount(acc);
         } else if (ch == '3') {
+          
+            time(&time_out);
+            
+            
+            
+            FILE *fp = fopen("time_log.txt", "a");
+            if (fp != NULL) {
+              
+              
+                char *time_in_str = ctime(&time_in);
+                char *time_out_str = ctime(&time_out);
+                if (time_in_str[strlen(time_in_str) - 1] == '\n') time_in_str[strlen(time_in_str) - 1] = '\0';
+                if (time_out_str[strlen(time_out_str) - 1] == '\n') time_out_str[strlen(time_out_str) - 1] = '\0';
+                
+                fprintf(fp, "ID: %s, Time In: %s, Time Out: %s\n", acc->idNumber, time_in_str, time_out_str);
+                fclose(fp);
+            } else {
+     
+                printf("Error: Could not open time log file.\n");
+            }
+            
             printf("Logging out...\n");
             loadingScreen();
             Sleep(600);
             return;
+        } else if (ch == '4') {
+            viewAttendance();
+        } else if (ch == '5') {
+         
+            while (1) {
+                system("cls");
+                printf("\033[36;5m");
+                printf("                  [-]***************************************************************************************[-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]                    S   T   U   D   E   N   T     R   E   C   O   R   D                [-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]=======================================================================================[-]\n");
+                printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+                printf("                  [-]=======================================================================================[-]\n");
+                printf("                  [-]***************************************************************************************[-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+                printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+                printf("                  [-]                     [1] VIEW ENROLLED STUDENTS                                       [-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+                printf("                  [-]                     [2] VIEW PENDING ENROLLMENTS                                     [-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+                printf("                  [-]                     [3] VIEW BALANCES                                                 [-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+                printf("                  [-]                     [4] BACK TO MAIN MENU                                            [-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+                printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+                printf("                  [-]                                                                                       [-]\n");
+                printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");
+                printf("Enter choice: ");
+                ch = getch();
+                printf("%c\n", ch);
+                if (ch == '1') {
+                    viewEnrolledStudents();
+                } else if (ch == '2') {
+                    viewPendingEnrollments();
+                } else if (ch == '3') {
+                    viewBalances();
+                } else if (ch == '4') {
+                    break;  
+                } else {
+                    system("cls");
+                    invalid_Option();
+                    getch();
+                }
+            }
         } else {
-        	system("cls");
-             invalid_Option();
+            system("cls");
+            invalid_Option();
             getch();
         }
     }
-
 }
+
+
+
+
+void enrollmentForm() {
+    char name[100];
+    char id[20];
+    char role[20];
+    char course[50] = "-";
+    char department[100] = "-";
+    int age;
+
+    
+    system("cls");  
+
+    printf("\033[36;5m");
+    printf("                  [-][-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]                    E   N   R   O   L   L   M   E   N   T     F   O   R   M            [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-][-]\n");
+
+
+    printf("                  [-] Enter Full Name: ");
+    fgets(name, sizeof(name), stdin);
+    name[strcspn(name, "\n")] = 0; 
+
+    printf("                  [-] Enter ID: ");
+    fgets(id, sizeof(id), stdin);
+    id[strcspn(id, "\n")] = 0;
+
+    printf("                  [-] Enter Age: ");
+    scanf("%d", &age);
+    getchar();  
+
+    printf("                  [-] Enter Role (Student): ");
+    fgets(role, sizeof(role), stdin);
+    role[strcspn(role, "\n")] = 0;
+
+   if (strcmp(role, "Student") == 0) {
+  
+        printf("\n                  [-]                                                                                       [-]\n");
+        printf("                  [-]                    S   E   L   E   C   T     C   O  U   R   S   E                      [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+        printf("                  [-]=======================================================================================[-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [1] BSCS                                                          [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [2] BSOA                                                          [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [3] BTVTED                                                        [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");
+        char ch = getch();
+        if (ch == '1') strcpy(course, "BSCS");
+        else if (ch == '2') strcpy(course, "BSOA");
+        else if (ch == '3') strcpy(course, "BTVTED");
+        else {
+            printf("Invalid choice. Enrollment cancelled.\n");
+            return;
+        }
+        strcpy(department, "-");
+    } else {
+        printf("Invalid role. Enrollment cancelled.\n");
+        return;
+    }
+
+
+    printf("\n\n                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                            E N R O L L M E N T   S U M M A R Y                      [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-] Name: %s\n", name);
+    printf("                  [-] ID: %s\n", id);
+    printf("                  [-] Age: %d\n", age);
+    printf("                  [-] Role: %s\n", role);
+    printf("                  [-] Department: %s\n", department);
+    printf("                  [-] Course: %s\n", course);
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-] Enrollment Successful! Press any key to continue...\n");
+    getch();
+}
+
+
+
 
