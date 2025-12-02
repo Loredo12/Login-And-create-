@@ -1,4 +1,4 @@
-#include <stdio.h>#include <stdio.h>
+#include <stdio.h>#include <stdio.h>#include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,6 +24,7 @@ struct Account {
 };
 
 
+void addFacultySchedule();
 void menu();
 int createAccount();
 void loginAccount();
@@ -46,6 +47,7 @@ void facultyDashboard(struct Account *acc);
 void adminDashboard(struct Account *acc);
 
 
+void viewTeachingSchedule(struct Account *acc);
 void FacultList();
 void viewAttendance();
 void showStudentProfile(struct Account *acc);
@@ -1047,13 +1049,7 @@ void facultyDashboard(struct Account *acc) {
         ch = getch();
         printf("%c\n", ch);
         if (ch == '1') {
-            system("cls");
-            printf("Teaching schedule (sample):\n");
-            printf("- Monday 8:00-10:00  COMP101 (Main)\n");
-            printf("- Wednesday 10:00-12:00  COMP102 (Annex)\n");
-            printf("- Friday 1:00-3:00  LAB (Main)\n");
-            printf("\nPress any key to return...");
-            getch();
+            viewTeachingSchedule(acc);
         } else if (ch == '2') {
             showFacultyProfile(acc);
         } else if (ch == '3') {
@@ -1095,6 +1091,52 @@ void facultyDashboard(struct Account *acc) {
         }
     }
 }
+
+// New function to view teaching schedule for the logged-in faculty
+void viewTeachingSchedule(struct Account *acc) {
+    char line[256];
+    char facultyName[100];
+    int found = 0;
+    
+    // Construct faculty name (assuming handle is firstName + " " + lastName)
+    sprintf(facultyName, "%s %s", acc->firstName, acc->lastName);
+    
+    system("cls");
+    printf("Your Teaching Schedule\n");
+    printf("======================\n");
+    
+    FILE *fp = fopen("faculty_schedule.txt", "r");
+    if (fp == NULL) {
+        printf("Error: Could not open faculty_schedule.txt. No schedules found.\n");
+        printf("Press any key to return...\n");
+        getch();
+        return;
+    }
+    
+    while (fgets(line, sizeof(line), fp)) {
+        // Check if the line contains the faculty's handle
+        if (strstr(line, facultyName) != NULL) {
+            // Parse and display the schedule details
+            char subject[100], handle[100], time[100], room[100];
+            if (sscanf(line, "Subject: %[^,], Handle: %[^,], Time: %[^,], Room: %s", subject, handle, time, room) == 4) {
+                printf("Subject: %s\n", subject);
+                printf("Time: %s\n", time);
+                printf("Room: %s\n", room);
+                printf("------------------------\n");
+                found = 1;
+            }
+        }
+    }
+    fclose(fp);
+    
+    if (!found) {
+        printf("No teaching schedules found for you (%s).\n", facultyName);
+    }
+    
+    printf("Press any key to return to the dashboard...\n");
+    getch();
+}
+
 
 
 void viewAllAccounts() {
@@ -1825,6 +1867,9 @@ void registrarDash(struct Account *acc) {
         printf("                  [-]                     [5] STUDENT RECORD                                                [-]\n");
         printf("                  [-]                                                                                       [-]\n");
         printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
+        printf("                  [-]                     [6] ADD FACULTY SCHEDULE                                          [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
         printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
         printf("                  [-]                                                                                       [-]\n");
         printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");   
@@ -1911,6 +1956,8 @@ void registrarDash(struct Account *acc) {
                     getch();
                 }
             }
+        } else if (ch == '6') {
+            addFacultySchedule();
         } else {
             system("cls");
             invalid_Option();
@@ -1919,6 +1966,44 @@ void registrarDash(struct Account *acc) {
     }
 }
 
+
+// Function to add faculty schedule
+void addFacultySchedule() {
+    char subject[100], handle[100], timeSchedule[100], room[100];
+    
+    system("cls");  // Clear screen for input prompts
+    printf("Add Faculty Schedule\n");
+    printf("====================\n");
+    
+    printf("Enter subject: ");
+    fgets(subject, sizeof(subject), stdin);
+    subject[strcspn(subject, "\n")] = '\0';  // Remove trailing newline
+    
+    printf("Enter handle (teacher name/identifier): ");
+    fgets(handle, sizeof(handle), stdin);
+    handle[strcspn(handle, "\n")] = '\0';
+    
+    printf("Enter time schedule (e.g., Monday 9:00 AM - 10:00 AM): ");
+    fgets(timeSchedule, sizeof(timeSchedule), stdin);
+    timeSchedule[strcspn(timeSchedule, "\n")] = '\0';
+    
+    printf("Enter room assignment: ");
+    fgets(room, sizeof(room), stdin);
+    room[strcspn(room, "\n")] = '\0';
+    
+    // Save to file
+    FILE *fp = fopen("faculty_schedule.txt", "a");
+    if (fp != NULL) {
+        fprintf(fp, "Subject: %s, Handle: %s, Time: %s, Room: %s\n", subject, handle, timeSchedule, room);
+        fclose(fp);
+        printf("\nSchedule added successfully to faculty_schedule.txt.\n");
+    } else {
+        printf("\nError: Could not open faculty_schedule.txt for writing.\n");
+    }
+    
+    printf("Press any key to return to the dashboard...\n");
+    getch();
+}
 
 
 
@@ -1934,7 +2019,7 @@ void enrollmentForm() {
     system("cls");  
 
     printf("\033[36;5m");
-    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]                    E   N   R   O   L   L   M   E   N   T     F   O   R   M            [-]\n");
     printf("                  [-]                                                                                       [-]\n");
@@ -1962,9 +2047,9 @@ void enrollmentForm() {
 
    if (strcmp(role, "Student") == 0) {
   
-        printf("\n                [-]                                                                                        [-]\n");
-        printf("                  [-]                    S   E   L   E   C   T     C   O  U   R   S   E                      [-]\n");
-        printf("                  [-]                                                                                        [-]\n");
+        printf("\n                [-]=======================================================================================[-]\n");
+        printf("                  [-]                    S   E   L   E   C   T     C   O  U   R   S   E                     [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
         printf("                  [-]=======================================================================================[-]\n");
         printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
         printf("                  [-]=======================================================================================[-]\n");
@@ -2031,59 +2116,33 @@ void FacultList(){
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
 	printf("                     |×| NO. |                                 NAME                                  |          SCHEDULE           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|:|\n");
-	printf("                     |×|  1  |  [Q] MS. ARCEÑO, KIM                                                  |         FULL-TIME           |×|\n");
+	printf("                     |×|  1  |      MS. ARCEÑO, KIM                                                  |         FULL-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  2  |  [W] MR. ATIENZA, MICHAEL                                             |         FULL-TIME           |×|\n");
+	printf("                     |×|  2  |      MR. ATIENZA, MICHAEL                                             |         FULL-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  3  |  [E] MR. GORDON, RAIVEN                                               |         FULL-TIME           |×|\n");
+	printf("                     |×|  3  |      MR. GORDON, RAIVEN                                               |         FULL-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  4  |  [R] MR. JIMINEZ, CARL JOSEPH                                         |         FULL-TIME           |×|\n");
+	printf("                     |×|  4  |      MR. JIMINEZ, CARL JOSEPH                                         |         FULL-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  5  |  [T] MR. NORI, LACERNA                                                |         FULL-TIME           |×|\n");
+	printf("                     |×|  5  |      MR. NORI, LACERNA                                                |         FULL-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  6  |  [Y] MR. RAMIZARES, JOHN                                              |         PART-TIME           |×|\n");
+	printf("                     |×|  6  |      MR. RAMIZARES, JOHN                                              |         PART-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  7  |  [A] MR. RODRIGUEZ, JUDE                                              |         PART-TIME           |×|\n");
+	printf("                     |×|  7  |      MR. RODRIGUEZ, JUDE                                              |         PART-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  8  |  [S] MR. ROSALES, PAUL                                                |         PART-TIME           |×|\n");
+	printf("                     |×|  8  |      MR. ROSALES, PAUL                                                |         PART-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  9  |  [D] MR. PATALEN, FRANCIS JUN                                         |         PART-TIME           |×|\n");
+	printf("                     |×|  9  |      MR. PATALEN, FRANCIS JUN                                         |         PART-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  10 |  [F] MR. VELE, ALLAN                                                  |         PART-TIME           |×|\n");
+	printf("                     |×|  10 |      MR. VELE, ALLAN                                                  |         PART-TIME           |×|\n");
 	printf("                     |×|-----------------------------------------------------------------------------------------------------------|×|\n");
-	printf("                     |×|  11 |  [G] MS. YABUT, EDITH                                                 |         FULL-TIME           |×|\n");
+	printf("                     |×|  11 |      MS. YABUT, EDITH                                                 |         FULL-TIME           |×|\n");
 	printf("                     |×|___________________________________________________________________________________________________________|×|\n");
 	printf("                     |_______________________________________________________________________________________________________________|\n");
 		
-		getch = ch;
+		getch();
 		
-		if (ch == 'Q' || ch == 'q'){
-			
-		}else if (ch == 'W' || ch == 'w'){
-			
-		}else if (ch == 'E' || ch == 'e'){
-			
-		}else if (ch == 'R' || ch == 'r'){
-			
-		}else if (ch == 'T' || ch == 't'){
-			
-		}else if (ch == 'Y' || ch == 'y'){
-			
-		}else if ( ch == 'A' || ch == 'a'){
-			
-		}else if (ch == 'S' || ch == 's'){
-			
-		}else if (ch == 'D' || ch == 'd'){
-			
-		}else if (ch == 'F' || ch == 'f'){
-			
-		}else if (ch == 'G' || ch == 'g'){
-			
-		}else {
-			system("cls");
-			invalid_Option();
-			getch();
-		}
+	
 	
 	
 	}
