@@ -1,4 +1,4 @@
-#include <stdio.h>#include <stdio.h>#include <stdio.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -924,11 +924,11 @@ void studentDashboard(struct Account *acc) {
     printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
     printf("                  [-]=======================================================================================[-]\n");
     printf("                  [-]***************************************************************************************[-]\n");
-    printf("                  [-]           Welcome: %s %s   /n", acc->firstName, acc->lastName);
+    printf("                  [-]           Welcome: %s %s   \n", acc->firstName, acc->lastName);
     printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]            Course : %s     /n", acc->course);
+    printf("                  [-]            Course : %s     \n", acc->course);
     printf("                  [-]                                                                                       [-]\n");    
-	printf("                  [-]             ID     : %s     /n",  acc->idNumber);
+	printf("                  [-]             ID     : %s     \n",  acc->idNumber);
 	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
 	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
 	printf("                  [-]                     [1] VIEW SCHEDULE                                                 [-]\n");
@@ -2153,7 +2153,6 @@ void FacultList(){
 	
 	
 }
-
 
 
 
