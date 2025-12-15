@@ -7,6 +7,7 @@
 #include <ctype.h>
 #include <time.h>
 
+
 #define ACC_FILE "accounts.txt"
 #define TEMP_FILE "accounts_tmp.txt"
 
@@ -145,9 +146,8 @@ void generateId(const char* role, const char* department, char* idNumber) {
 		if (strstr(department, "Admin") || strstr(department, "ADM"))
 		sprintf(idNumber, "ADM-%06d", randomNum % 999999);
 	}
-        sprintf(idNumber, "ADM-%06d", randomNum % 999999);
-    }
-
+  
+  }
 
 
 
@@ -241,124 +241,192 @@ int createAccount() {
     char idNumber[30];
     FILE *fp;
 
- 
-    while (1) {
-        system("cls");
-        printf("\033[36;5m");
-        printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                               P   H   I   L   T   E   C   H       G   A   T   E                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Personal Information                                                                                      ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Account information                                                                                       ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Position                                                                                                  ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
-printf("                                                                   Personal Information\n\n");
 
-        printf("\n\n                                  Enter firstname:\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |                                                                                          |\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("\n                                  Type here: ");
-        if (scanf(" %[^\n]", firstName) != 1) { clear_stdin(); continue; }
 
-        if (strcmp(firstName, "9") == 0) return 0;
+while (1) {
+    system("cls");
+    printf("\033[36;5m");
+    printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                               P   H   I   L   T   E   C   H       G   A   T   E                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Personal Information                                                                                      ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Account information                                                                                       ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Position                                                                                                  ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+    printf("                                                                   Personal Information\n\n");
 
-        if (strlen(firstName) < 2) {
-            printf("\n(System): Firstname too short! Try again.\n");
-            getch();
-            continue;
-        }
-        break;
+    printf("\n\n                                  Enter firstname:\n");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
+    printf("                                 |                                                                                          |\n");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
+    printf("\n                                  Type here: ");
+    if (scanf(" %[^\n]", firstName) != 1) { clear_stdin(); continue; }
+
+    if (strcmp(firstName, "9") == 0) return 0;
+
+    if (strlen(firstName) < 2) {
+        printf("\n(System): Firstname too short! Try again.\n");
+        getch();
+        continue;
     }
 
 
-    while (1) {
-        system("cls");
-        printf("\033[36;5m");
-        printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                               P   H   I   L   T   E   C   H       G   A   T   E                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Personal Information                                                                                      ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Account information                                                                                       ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Position                                                                                                  ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
-printf("                                                                   Personal Information\n\n");
-
-        printf("\n\n                                  Enter lastname:\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |                                                                                          |\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("\n                                  Type here: ");
-        if (scanf(" %[^\n]", lastName) != 1) { clear_stdin(); continue; }
-        if (strcmp(lastName, "9") == 0) return 0;
-        if (strlen(lastName) < 2) {
-            printf("\n(System): Lastname too short! Try again.\n");
-            getch();
-            continue;
+    int valid = 1;
+    for (int i = 0; firstName[i] != '\0'; i++) {
+        char c = firstName[i];
+        if (!isalpha(c) && c != '\'') {
+            valid = 0;
+            break;
         }
-        break;
+    }
+    if (!valid) {
+        printf("\n(System): Firstname contains invalid characters! Only letters and apostrophes (') are allowed. Try again.\n");
+        getch();
+        continue;
+    }
+
+    break;
+}
+
+
+
+    
+        while (1) {
+    system("cls");
+    printf("\033[36;5m");
+    printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                               P   H   I   L   T   E   C   H       G   A   T   E                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Personal Information                                                                                      ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Account information                                                                                       ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Position                                                                                                  ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+    printf("                                                                   Personal Information\n\n");
+
+    printf("\n\n                                  Enter lastname:\n");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
+    printf("                                 |                                                                                          |\n");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
+    printf("\n                                  Type here: ");
+    if (scanf(" %[^\n]", lastName) != 1) { clear_stdin(); continue; }
+    if (strcmp(lastName, "9") == 0) return 0;
+    if (strlen(lastName) < 2) {
+        printf("\n(System): Lastname too short! Try again.\n");
+        getch();
+        continue;
     }
 
 
-    while (1) {
-        system("cls");
-        printf("\033[36;5m");
-        printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                               P   H   I   L   T   E   C   H       G   A   T   E                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Personal Information                                                                                      ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Account information                                                                                       ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                Position                                                                                                  ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||                                                                                                                          ||\n");
-printf("          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
-printf("                                                                   Personal Information\n\n");
-
-        printf("\n\n                                  Date of Birth (DD/MM/YYYY):\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("                                 |                                                                                          |\n");
-        printf("                                  ------------------------------------------------------------------------------------------\n");
-        printf("\n                                  Type here: ");
-        if (scanf(" %[^\n]", birthD) != 1) { clear_stdin(); continue; }
-        if (strcmp(birthD, "9") == 0) return 0;
-        if (strlen(birthD) != 10 || birthD[2] != '/' || birthD[5] != '/') {
-            printf("\n(System): Invalid date format! Use DD/MM/YYYY\n");
-            getch();
-            continue;
+    int valid = 1;
+    for (int i = 0; lastName[i] != '\0'; i++) {
+        char c = lastName[i];
+        if (!isalpha(c) && c != '\'') {
+            valid = 0;
+            break;
         }
-        break;
     }
+    if (!valid) {
+        printf("\n(System): Lastname contains invalid characters! Only letters and apostrophes (') are allowed. Try again.\n");
+        getch();
+        continue;
+    }
+
+    break;
+}
+
+
+
+
+while (1) {
+    system("cls");
+    printf("\033[36;5m");
+    printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                               P   H   I   L   T   E   C   H       G   A   T   E                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Personal Information                                                                                      ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Account information                                                                                       ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                Position                                                                                                  ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||                                                                                                                          ||\n");
+    printf("          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+    printf("                                                                   Personal Information\n\n");
+
+    printf("\n\n                                  Date of Birth (DD/MM/YYYY):\n");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
+    printf("                                 |                                                                                          |\n");
+    printf("                                  ------------------------------------------------------------------------------------------\n");
+    printf("\n                                  Type here: ");
+    if (scanf(" %[^\n]", birthD) != 1) { clear_stdin(); continue; }
+    if (strcmp(birthD, "9") == 0) return 0;
+    if (strlen(birthD) != 10 || birthD[2] != '/' || birthD[5] != '/') {
+        printf("\n(System): Invalid date format! Use DD/MM/YYYY\n");
+        getch();
+        continue;
+    }
+
+    
+    if (!isdigit(birthD[0]) || !isdigit(birthD[1]) || !isdigit(birthD[3]) || !isdigit(birthD[4]) ||
+        !isdigit(birthD[6]) || !isdigit(birthD[7]) || !isdigit(birthD[8]) || !isdigit(birthD[9])) {
+        printf("\n(System): Date must contain only numbers in DD/MM/YYYY format! Try again.\n");
+        getch();
+        continue;
+    }
+
+  
+    int day = atoi(&birthD[0]);
+    int month = atoi(&birthD[3]);
+    int year = atoi(&birthD[6]);
+
+
+    if (day < 1 || day > 31) {
+        printf("\n(System): Day must be between 1 and 31! Try again.\n");
+        getch();
+        continue;
+    }
+    if (month < 1 || month > 12) {
+        printf("\n(System): Month must be between 1 and 12! Try again.\n");
+        getch();
+        continue;
+    }
+    if (year < 1900) {
+        printf("\n(System): Year must be 1900 or later! Try again.\n");
+        getch();
+        continue;
+    }
+
+    break;
+}
 
 
     while (1) {
@@ -658,37 +726,8 @@ printf("                                                                   Perso
             else continue;
             strcpy(course, "-");
         } else if (strcmp(role, "Student") == 0) {
-        	printf("\033[36;5m");
-        	printf("                  [-]***************************************************************************************[-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]                    S   E   L   E   C   T     C   O  U   R   S   E                      [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
-    printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-]***************************************************************************************[-]\n");
-    printf("                  [-]                                                                                       [-]\n"); 
-	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [1] BSCS                                                          [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-	printf("                  [-]                     [2] BSOA                                                          [-]\n");
-	printf("                  [-]                                                                                       [-]\n");
-	printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-    printf("                  [-]                     [3] BTVTED                                                        [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-]         ++      ++=========================================++      ++                 [-]\n");
-    printf("                  [-]                                                                                       [-]\n");
-   	printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
-   	printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n"); 
-            char ch = getch();
-            if (ch == '1') strcpy(course, "BSCS");
-            else if (ch == '2') strcpy(course, "BSOA");
-            else if (ch == '3') strcpy(course, "BSVTVTED");
-            else continue;
-            strcpy(department, "-");
+        
+        enrollmentForm();
         } else if (strcmp(role, "Admin") == 0) {
             printf("\033[36;5m");
             printf("                  [-]***************************************************************************************[-]\n");
@@ -743,7 +782,7 @@ printf("                                                                   Perso
 
     printf("\n(System): Account created and saved successfully!\n");
     printf("Username: %s\nRole: %s\nGenerated ID: %s\n", username, role, idNumber);
-
+	printf("Copy the ID to login your account");
 getch(); 
 
 return 1;  
@@ -1356,15 +1395,16 @@ void adminDashboard(struct Account *acc) {
         } else if (ch == '2') {
             changePasswordAccount(acc);
         } else if (ch == '3') {
-            // Record time out (logout time)
+            
+            
             time(&time_out);
             
-            // Save time in and time out to a log file (e.g., time_log.txt)
-            // This appends to the file; you can change the filename or path as needed
+            
+            
             FILE *fp = fopen("time_log.txt", "a");
             if (fp != NULL) {
-                // Use ctime to convert time_t to a readable string
-                // ctime includes a newline, so we trim it for better formatting
+               
+               
                 char *time_in_str = ctime(&time_in);
                 char *time_out_str = ctime(&time_out);
                 if (time_in_str[strlen(time_in_str) - 1] == '\n') time_in_str[strlen(time_in_str) - 1] = '\0';
@@ -1373,7 +1413,7 @@ void adminDashboard(struct Account *acc) {
                 fprintf(fp, "ID: %s, Time In: %s, Time Out: %s\n", acc->idNumber, time_in_str, time_out_str);
                 fclose(fp);
             } else {
-                // Optional: Handle file open error (e.g., print a message)
+                
                 printf("Error: Could not open time log file.\n");
             }
             
@@ -2133,9 +2173,10 @@ void enrollmentForm() {
     char course[50] = "-";
     char department[100] = "-";
     int age;
+    float tuitionFee = 0.0;  // Tuition fee based on course
+    char subjects[500] = "";  // String to hold subjects list
 
-    
-    system("cls");  
+    system("cls");
 
     printf("\033[36;5m");
     printf("                  [-]=======================================================================================[-]\n");
@@ -2147,10 +2188,9 @@ void enrollmentForm() {
     printf("                  [-]=======================================================================================[-]\n");
     printf("                  [-][-]\n");
 
-
     printf("                  [-] Enter Full Name: ");
     fgets(name, sizeof(name), stdin);
-    name[strcspn(name, "\n")] = 0; 
+    name[strcspn(name, "\n")] = 0;
 
     printf("                  [-] Enter ID: ");
     fgets(id, sizeof(id), stdin);
@@ -2158,14 +2198,13 @@ void enrollmentForm() {
 
     printf("                  [-] Enter Age: ");
     scanf("%d", &age);
-    getchar();  
+    getchar();
 
     printf("                  [-] Enter Role (Student): ");
     fgets(role, sizeof(role), stdin);
     role[strcspn(role, "\n")] = 0;
 
-   if (strcmp(role, "Student") == 0) {
-  
+    if (strcmp(role, "Student") == 0) {
         printf("\n                [-]=======================================================================================[-]\n");
         printf("                  [-]                    S   E   L   E   C   T     C   O  U   R   S   E                     [-]\n");
         printf("                  [-]                                                                                       [-]\n");
@@ -2190,10 +2229,19 @@ void enrollmentForm() {
         printf("                  [-]                                                                                       [-]\n");
         printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");
         char ch = getch();
-        if (ch == '1') strcpy(course, "BSCS");
-        else if (ch == '2') strcpy(course, "BSOA");
-        else if (ch == '3') strcpy(course, "BTVTED");
-        else {
+        if (ch == '1') {
+            strcpy(course, "BSCS");
+            tuitionFee = 50000.0;  
+            strcpy(subjects, "1. Introduction to Programming\n2. Data Structures and Algorithms\n3. Database Management\n4. Web Development\n5. Software Engineering\n6. Computer Networks");
+        } else if (ch == '2') {
+            strcpy(course, "BSOA");
+            tuitionFee = 45000.0;  
+            strcpy(subjects, "1. Principles of Accounting\n2. Business Management\n3. Financial Management\n4. Marketing Strategies\n5. Office Administration\n6. Entrepreneurship");
+        } else if (ch == '3') {
+            strcpy(course, "BTVTED");
+            tuitionFee = 40000.0;  
+            strcpy(subjects, "1. Teaching Methods\n2. Curriculum Development\n3. Educational Psychology\n4. Classroom Management\n5. Assessment and Evaluation\n6. Vocational Training");
+        } else {
             printf("Invalid choice. Enrollment cancelled.\n");
             return;
         }
@@ -2203,20 +2251,77 @@ void enrollmentForm() {
         return;
     }
 
-
-    printf("\n\n                  [-]=======================================================================================[-]\n");
-    printf("                  [-]                            E N R O L L M E N T   S U M M A R Y                      [-]\n");
+   
+    system("cls");
+    printf("\033[36;5m");
     printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-] Name: %s\n", name);
-    printf("                  [-] ID: %s\n", id);
-    printf("                  [-] Age: %d\n", age);
-    printf("                  [-] Role: %s\n", role);
-    printf("                  [-] Department: %s\n", department);
-    printf("                  [-] Course: %s\n", course);
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]                  P H I L T E C H   G A T E W A Y   E N R O L L M E N T                [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]=======================================================================================[-]\n");
-    printf("                  [-] Enrollment Successful! Press any key to continue...\n");
+    printf("                  [-]|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]          PHILIPPINE TECHNOLOGICAL INSTITUTE OF SCIENCE, ARTS AND TRADE INC.           [-]\n");
+    printf("                  [-]                        F.T. CATAPUSAN ST., TANAY, RIZAL                               [-]\n");
+    printf("                  [-]                           DATE: %s                                                 [-]\n", __DATE__);  // Uses compile date; replace with dynamic if needed
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]                              E N R O L L M E N T   C O N F I R M A T I O N             [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Dear %s,\n", name);
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] We are pleased to confirm your enrollment in the following program at PHILTECH.       [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                           S T U D E N T   D E T A I L S                               [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Full Name          : %s\n", name);
+    printf("                  [-] Student ID         : %s\n", id);
+    printf("                  [-] Age                : %d\n", age);
+    printf("                  [-] Role               : %s\n", role);
+    printf("                  [-] Department         : %s\n", department);
+    printf("                  [-] Course             : %s\n", course);
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                           E N R O L L E D   S U B J E C T S                           [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    // Print subjects line by line
+    char *subjectLine = strtok(subjects, "\n");
+    while (subjectLine != NULL) {
+        printf("                  [-] %s\n", subjectLine);
+        subjectLine = strtok(NULL, "\n");
+    }
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                           T U I T I O N   F E E   D E T A I L S                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Total Tuition Fee  : ₱%.2f\n", tuitionFee);
+    printf("                  [-] Payment Options    : Payable in full or up to 4 installments.\n");
+    printf("                  [-] Instructions       : Contact the Registrar's Office for payment details.\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Congratulations on joining PHILTECH! We look forward to your academic success.        [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Sincerely,                                                                            [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Registrar's Office                                                                    [-]\n");
+    printf("                  [-] Philippine Technological Institute of Science, Arts and Trade Inc.                    [-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
+    printf("                  [-]                                                                                       [-]\n");
+    printf("                  [-] Enrollment Successful! Press any key to continue...                                   [-]\n");
+    printf("                  [-]=======================================================================================[-]\n");
     getch();
 }
+
 
 
 
