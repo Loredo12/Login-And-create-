@@ -141,7 +141,10 @@ void generateId(const char* role, const char* department, char* idNumber) {
     } else if (strcmp(role, "Admin")==0){
     	if (strstr(department, "Registrar") || strstr(department, "RGR"))
     	sprintf(idNumber,"ADM-RGR-%06d", randomNum);
-	}else 
+	}else if (strcmp(role, "Admin")==0){
+		if (strstr(department, "Admin") || strstr(department, "ADM"))
+		sprintf(idNumber, "ADM-%06d", randomNum % 999999);
+	}
         sprintf(idNumber, "ADM-%06d", randomNum % 999999);
     }
 
