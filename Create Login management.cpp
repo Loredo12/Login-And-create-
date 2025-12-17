@@ -743,7 +743,7 @@ printf("                                                                   Perso
 
     printf("\n(System): Account created and saved successfully!\n");
     printf("Username: %s\nRole: %s\nGenerated ID: %s\n", username, role, idNumber);
-
+	printf("Copy generated id before you leave to login your account");
 getch(); 
 
 return 1;  
