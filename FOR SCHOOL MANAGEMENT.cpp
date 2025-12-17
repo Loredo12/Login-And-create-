@@ -1,4 +1,4 @@
-
+  
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1710,6 +1710,7 @@ void loginAccount() {
     char username[50], password[100], inputId[50];
     FILE *fp;
     int attempts = 0;
+    char choice;
 
     while (attempts < 3) {
         system("cls");
@@ -1728,6 +1729,7 @@ void loginAccount() {
         printf("                  |                                         ACCOUNT LOGIN SECTION                                                        |\n");
         printf("                  +======================================================================================================================+\n");
 
+        
         printf("\n\n                                  Enter Username:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |                                                                                          |\n");
@@ -1737,6 +1739,27 @@ void loginAccount() {
         if (!fgets(username, sizeof(username), stdin)) username[0] = '\0';
         username[strcspn(username, "\n")] = 0;
 
+       
+        printf("\n\n                                      [=]==============[=]    [=]===============[=]      \n");
+        printf("                                      [=]              [=]    [=]               [=]      \n");
+        printf("                                      [=]     BACK     [=]    [=]      NEXT     [=]      \n");
+        printf("                                      [=]==============[=]    [=]===============[=]      \n");                
+        printf("                                       Press B to Back and N to NExt");
+        do {
+            choice = getch();
+            choice = toupper(choice);
+        } while (choice != 'B' && choice != 'N');
+        if (choice == 'B') {
+            fclose(fp);
+            return; 
+        }
+
+        system("cls");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                         ACCOUNT LOGIN SECTION                                                        |\n");
+        printf("                  +======================================================================================================================+\n");
         printf("\n\n                                  Enter Password:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |                                                                                          |\n");
@@ -1744,6 +1767,29 @@ void loginAccount() {
         printf("\n                                  Type here: ");
         inputPassword(password);
 
+        
+          printf("\n\n                                      [=]==============[=]    [=]===============[=]      \n");
+        printf("                                      [=]              [=]    [=]               [=]      \n");
+        printf("                                      [=]     BACK     [=]    [=]      NEXT     [=]      \n");
+        printf("                                      [=]==============[=]    [=]===============[=]      \n");                
+        printf("                                       Press B to Back and N to NExt");
+        
+        
+        
+        do {
+            choice = getch();
+            choice = toupper(choice);
+        } while (choice != 'B' && choice != 'N');
+        if (choice == 'B') {
+            continue; 
+        }
+
+    system("cls");
+    printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                                   PHILTECH GATEWAY                                                   |\n");
+        printf("                  +----------------------------------------------------------------------------------------------------------------------+\n");
+        printf("                  |                                         ACCOUNT LOGIN SECTION                                                        |\n");
+        printf("                  +======================================================================================================================+\n");
         printf("\n\n                                  Enter Generated ID:\n");
         printf("                                  ------------------------------------------------------------------------------------------\n");
         printf("                                 |                                                                                          |\n");
@@ -1752,6 +1798,24 @@ void loginAccount() {
         if (!fgets(inputId, sizeof(inputId), stdin)) inputId[0] = '\0';
         inputId[strcspn(inputId, "\n")] = 0;
 
+
+        printf("\n\n                                      [=]==============[=]    [=]===============[=]      \n");
+        printf("                                      [=]              [=]    [=]               [=]      \n");
+        printf("                                      [=]     BACK     [=]    [=]      NEXT     [=]      \n");
+        printf("                                      [=]==============[=]    [=]===============[=]      \n");                
+        printf("                                       Press B to Back and N to NExt");
+        
+        
+        
+        do {
+            choice = getch();
+            choice = toupper(choice);
+        } while (choice != 'B' && choice != 'N');
+        if (choice == 'B') {
+            continue; 
+        }
+
+    
         int foundUser = 0, passwordMatch = 0, idMatch = 0;
         rewind(fp);
         while (fscanf(fp,
@@ -1793,11 +1857,11 @@ void loginAccount() {
                 studentDashboard(&acc);
             } else if (strcmp(acc.role, "Faculty") == 0) {
                 facultyDashboard(&acc);
-            } else if (strcmp (acc.role, "Admin")== 0){ 
+            } else if (strcmp(acc.role, "Admin") == 0){ 
                 registrarDash(&acc);
-            }else {
-            	adminDashboard(&acc);
-			}
+            } else {
+                adminDashboard(&acc);
+            }
             return;
         }
 
@@ -2126,17 +2190,17 @@ void registrarDash(struct Account *acc) {
 }
 
 
-// Function to add faculty schedule
+
 void addFacultySchedule() {
     char subject[100], handle[100], timeSchedule[100], room[100];
     
-    system("cls");  // Clear screen for input prompts
+    system("cls"); 
     printf("Add Faculty Schedule\n");
     printf("====================\n");
     
     printf("Enter subject: ");
     fgets(subject, sizeof(subject), stdin);
-    subject[strcspn(subject, "\n")] = '\0';  // Remove trailing newline
+    subject[strcspn(subject, "\n")] = '\0';  
     
     printf("Enter handle (teacher name/identifier): ");
     fgets(handle, sizeof(handle), stdin);
@@ -2150,7 +2214,7 @@ void addFacultySchedule() {
     fgets(room, sizeof(room), stdin);
     room[strcspn(room, "\n")] = '\0';
     
-    // Save to file
+  
     FILE *fp = fopen("faculty_schedule.txt", "a");
     if (fp != NULL) {
         fprintf(fp, "Subject: %s, Handle: %s, Time: %s, Room: %s\n", subject, handle, timeSchedule, room);
@@ -2173,8 +2237,8 @@ void enrollmentForm() {
     char course[50] = "-";
     char department[100] = "-";
     int age;
-    float tuitionFee = 0.0;  // Tuition fee based on course
-    char subjects[500] = "";  // String to hold subjects list
+    float tuitionFee = 0.0; 
+    char subjects[500] = ""; 
 
     system("cls");
 
@@ -2249,6 +2313,20 @@ void enrollmentForm() {
     } else {
         printf("Invalid role. Enrollment cancelled.\n");
         return;
+        
+        
+    }
+    
+    
+    
+ FILE *file = fopen("notes.txt", "a");  
+    if (file != NULL) {
+        fprintf(file, "Name: %s\nID: %s\nAge: %d\nRole: %s\nCourse: %s\nDepartment: %s\nTuition Fee: %.2f\nSubjects:\n%s\n\n", 
+                name, id, age, role, course, department, tuitionFee, subjects);
+        fclose(file);
+        printf("Enrollment data saved to notes.txt\n");
+    } else {
+        printf("Error: Could not save enrollment data to file.\n");
     }
 
    
@@ -2264,7 +2342,7 @@ void enrollmentForm() {
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]          PHILIPPINE TECHNOLOGICAL INSTITUTE OF SCIENCE, ARTS AND TRADE INC.           [-]\n");
     printf("                  [-]                        F.T. CATAPUSAN ST., TANAY, RIZAL                               [-]\n");
-    printf("                  [-]                           DATE: %s                                                 [-]\n", __DATE__);  // Uses compile date; replace with dynamic if needed
+    printf("                  [-]                           DATE: %s                                                 [-]\n", __DATE__);  
     printf("                  [-]                                                                                       [-]\n");
     printf("                  [-]=======================================================================================[-]\n");
     printf("                  [-]                                                                                       [-]\n");
@@ -2291,7 +2369,7 @@ void enrollmentForm() {
     printf("                  [-]                           E N R O L L E D   S U B J E C T S                           [-]\n");
     printf("                  [-]=======================================================================================[-]\n");
     printf("                  [-]                                                                                       [-]\n");
-    // Print subjects line by line
+   
     char *subjectLine = strtok(subjects, "\n");
     while (subjectLine != NULL) {
         printf("                  [-] %s\n", subjectLine);
