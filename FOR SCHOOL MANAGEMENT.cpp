@@ -1160,9 +1160,9 @@ void studentDashboard(struct Account *acc) {
 
 void facultyDashboard(struct Account *acc) {
     char ch;
-    time_t time_in, time_out;  // Variables to store login and logout times
+    time_t time_in, time_out;  
     
-    // Record time in (login time) at the start of the function
+   
     time(&time_in);
     
     while (1) {
@@ -1217,15 +1217,15 @@ void facultyDashboard(struct Account *acc) {
         } else if (ch == '5') {
             changePasswordAccount(acc);
         } else if (ch == '6') {
-            // Record time out (logout time)
+          
             time(&time_out);
             
-            // Save time in and time out to a log file (e.g., time_log.txt)
-            // This appends to the file; you can change the filename or path as needed
+          
+          
             FILE *fp = fopen("time_log.txt", "a");
             if (fp != NULL) {
-                // Use ctime to convert time_t to a readable string
-                // ctime includes a newline, so we trim it for better formatting
+             
+             
                 char *time_in_str = ctime(&time_in);
                 char *time_out_str = ctime(&time_out);
                 if (time_in_str[strlen(time_in_str) - 1] == '\n') time_in_str[strlen(time_in_str) - 1] = '\0';
@@ -1234,7 +1234,7 @@ void facultyDashboard(struct Account *acc) {
                 fprintf(fp, "ID: %s, Time In: %s, Time Out: %s\n", acc->idNumber, time_in_str, time_out_str);
                 fclose(fp);
             } else {
-                // Optional: Handle file open error (e.g., print a message)
+              
                 printf("Error: Could not open time log file.\n");
             }
             
@@ -1249,14 +1249,14 @@ void facultyDashboard(struct Account *acc) {
         }
     }
 }
-
-// New function to view teaching schedule for the logged-in faculty
-void viewTeachingSchedule(struct Account *acc) {
+ 
+ 
+ void viewTeachingSchedule(struct Account *acc) {
     char line[256];
     char facultyName[100];
     int found = 0;
     
-    // Construct faculty name (assuming handle is firstName + " " + lastName)
+ 
     sprintf(facultyName, "%s %s", acc->firstName, acc->lastName);
     
     system("cls");
@@ -1272,9 +1272,9 @@ void viewTeachingSchedule(struct Account *acc) {
     }
     
     while (fgets(line, sizeof(line), fp)) {
-        // Check if the line contains the faculty's handle
+     
         if (strstr(line, facultyName) != NULL) {
-            // Parse and display the schedule details
+          
             char subject[100], handle[100], time[100], room[100];
             if (sscanf(line, "Subject: %[^,], Handle: %[^,], Time: %[^,], Room: %s", subject, handle, time, room) == 4) {
                 printf("Subject: %s\n", subject);
@@ -1344,9 +1344,9 @@ void deleteAllUserData() {
 
 void adminDashboard(struct Account *acc) {
     char ch;
-    time_t time_in, time_out;  // Variables to store login and logout times
+    time_t time_in, time_out;   
     
-    // Record time in (login time) at the start of the function
+   
     time(&time_in);
     
     while (1) {
@@ -2035,7 +2035,7 @@ void viewEnrolledStudents() {
     getch();
 }
 
-// The rest of the code remains the same, but replace the placeholder viewEnrolledStudents() with this implementation.
+
 
 void viewPendingEnrollments() {
   
@@ -2232,13 +2232,14 @@ void addFacultySchedule() {
 
 void enrollmentForm() {
     char name[100];
-    char id[20];
+    char id[20] = ""; 
     char role[20];
     char course[50] = "-";
     char department[100] = "-";
     int age;
     float tuitionFee = 0.0; 
     char subjects[500] = ""; 
+    char age_str[10];  
 
     system("cls");
 
@@ -2253,20 +2254,20 @@ void enrollmentForm() {
     printf("                  [-][-]\n");
 
     printf("                  [-] Enter Full Name: ");
+    fflush(stdout);  
     fgets(name, sizeof(name), stdin);
-    name[strcspn(name, "\n")] = 0;
-
-    printf("                  [-] Enter ID: ");
-    fgets(id, sizeof(id), stdin);
-    id[strcspn(id, "\n")] = 0;
+    name[strcspn(name, "\n")] = 0;  
 
     printf("                  [-] Enter Age: ");
-    scanf("%d", &age);
-    getchar();
+    fflush(stdout);
+    fgets(age_str, sizeof(age_str), stdin);
+    age_str[strcspn(age_str, "\n")] = 0;  
+    age = atoi(age_str);  
 
     printf("                  [-] Enter Role (Student): ");
+    fflush(stdout);
     fgets(role, sizeof(role), stdin);
-    role[strcspn(role, "\n")] = 0;
+    role[strcspn(role, "\n")] = 0;  
 
     if (strcmp(role, "Student") == 0) {
         printf("\n                [-]=======================================================================================[-]\n");
@@ -2291,6 +2292,7 @@ void enrollmentForm() {
         printf("                  [-]                                                                                       [-]\n");
         printf("                  [-]         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                 [-]\n");
         printf("                  [-]                                                                                       [-]\n");
+        printf("                  [-]                                                                                       [-]\n");
         printf("                  [-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-][-]\n");
         char ch = getch();
         if (ch == '1') {
@@ -2313,13 +2315,9 @@ void enrollmentForm() {
     } else {
         printf("Invalid role. Enrollment cancelled.\n");
         return;
-        
-        
     }
     
-    
-    
- FILE *file = fopen("notes.txt", "a");  
+    FILE *file = fopen("notes.txt", "a");  
     if (file != NULL) {
         fprintf(file, "Name: %s\nID: %s\nAge: %d\nRole: %s\nCourse: %s\nDepartment: %s\nTuition Fee: %.2f\nSubjects:\n%s\n\n", 
                 name, id, age, role, course, department, tuitionFee, subjects);
@@ -2329,7 +2327,6 @@ void enrollmentForm() {
         printf("Error: Could not save enrollment data to file.\n");
     }
 
-   
     system("cls");
     printf("\033[36;5m");
     printf("                  [-]=======================================================================================[-]\n");
@@ -2358,8 +2355,7 @@ void enrollmentForm() {
     printf("                  [-]                           S T U D E N T   D E T A I L S                               [-]\n");
     printf("                  [-]=======================================================================================[-]\n");
     printf("                  [-]                                                                                       [-]\n");
-    printf("                  [-] Full Name          : %s\n", name);
-    printf("                  [-] Student ID         : %s\n", id);
+    printf("                  [-] Full Name          : %sn", name); 
     printf("                  [-] Age                : %d\n", age);
     printf("                  [-] Role               : %s\n", role);
     printf("                  [-] Department         : %s\n", department);
@@ -2455,7 +2451,6 @@ void FacultList(){
 	
 	
 }
-
 
 
 
